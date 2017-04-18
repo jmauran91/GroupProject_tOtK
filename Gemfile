@@ -26,6 +26,8 @@ group :development, :test do
   gem 'valid_attribute'
   gem 'shoulda-matchers', require: false
   gem 'byebug', platform: :mri
+  gem 'coveralls', require: false
+  gem 'dotenv'
 end
 
 group :development do
