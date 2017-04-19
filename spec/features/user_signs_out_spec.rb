@@ -11,7 +11,7 @@ feature 'user signs out' do
   # Once I've signed out I can't perform authenticated user tasks
 
   scenario 'user clicks sign out' do
-    user = User.create( username: "tester", email: "email@address.com", password: "password" )
+    User.create(username: "tester", email: "email@address.com", password: "password")
     visit root_path
 
     click_link "Sign In"

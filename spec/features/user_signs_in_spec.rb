@@ -12,7 +12,7 @@ feature "user signs in" do
   # be signed in
   # When I've signed in I should be able to access authenticated user actions
   scenario "clicks sign in and fills in the fields and signs in" do
-    user = User.create(username: "Johnboy91", email: "Highflyer87@gmail.com", password: "most_generic_pword")
+    User.create(username: "Johnboy91", email: "Highflyer87@gmail.com", password: "most_generic_pword")
     visit root_path
 
     click_link "Sign In"
