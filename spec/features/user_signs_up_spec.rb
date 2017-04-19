@@ -5,11 +5,14 @@ require 'rails_helper'
 # So that I can post items and review them
 
 feature 'user signs up' do
-  #ACCEPTANCE CRITERIA
-  #I should see a link on the page to sign-up
-  #if I fill out all of the required fields with valid information I should become an authenticated user
-  #valid information includes username, email address, password, and confirmed password
-  #if I provide invalid information I will receive error messages regarding why my form failed and it should retain my information
+  # ACCEPTANCE CRITERIA
+  # I should see a link on the page to sign-up
+  # If I fill out all of the required fields with valid information I should
+  # become an authenticated user
+  # Valid information includes username, email address, password, and confirmed
+  # password
+  # If I provide invalid information I will receive error messages regarding
+  # why my form failed and it should retain my information
 
   scenario 'user provides valid information in the sign-up form' do
     visit root_path
