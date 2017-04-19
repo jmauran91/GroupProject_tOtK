@@ -11,11 +11,24 @@
   <body>
     <nav>
       <ul>
-        <li>
-          <%= link_to "Sign Up", new_user_registration_path %>
-        </li>
+        <% if user_signed_in? %>
+          <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
+        <% else %>
+          <li><%= link_to "Sign Up", new_user_registration_path %></li>
+          <li><%= link_to "Sign In", new_user_session_path %></li>
+        <% end %>
       </ul>
     </nav>
+    <% if flash.any? %>
+      <div class="flash">
+        <div class="container">
+          <% if flash[:notice] %>
+            <%= flash[:notice] %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+
     <%= yield %>
   </body>
 </html>
