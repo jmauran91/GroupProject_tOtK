@@ -1,3 +1,5 @@
+require 'rails_helper'
+
 feature "user submits a new release" do
   scenario "user visits the new release form page and submits a release" do
     User.create!(username: 'jbone91', email: 'johnmauran1@gmail.com', password: 'noneofyourbusiness')
