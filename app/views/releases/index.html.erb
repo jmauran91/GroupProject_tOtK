@@ -1,0 +1,16 @@
+<h1> Welcome to the Kensai Music DB </h1>
+
+<div class="column large-6">
+  <% @releases.each do |release| %>
+  <ul>
+    <li> <%= link_to release.title, release_path(release) %>
+      <%= release.artist %>
+      <img src="<%=release.album_art_url%>" />
+     </li>
+  </ul>
+  <% end %>
+</div>
+
+<div class="">
+  <p> <%= link_to "Add Release", new_release_path%> </p>
+</div>
