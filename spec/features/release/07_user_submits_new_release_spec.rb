@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 feature "user submits a new release" do
-  scenario "visit the new release form page and adds a new release" do
+  pending "visit the new release form page and adds a new release" do
     visit new_release_path
     expect(page).to have_content "New Release Form"
 

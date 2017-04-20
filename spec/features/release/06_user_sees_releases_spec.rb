@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 feature "user sees releases" do
-  scenario "User goes to the index page and sees releases" do
+  pending "User goes to the index page and sees releases" do
     akalife = Release.create!(title: 'Symphony no. 6', artist: 'Beethoven', year: 1900, studio: 'morrison', no_of_tracks: 3, album_art_url: 'http://www.beethovenphoto.com')
 
     visit releases_path
