@@ -2,12 +2,15 @@ class ReleasesController < ApplicationController
   def index
     @releases = Release.all
   end
+  
   def show
     @release = Release.find(params[:id])
   end
+
   def new
     @release = Release.new
   end
+
   def create
     if current_user
       @user = current_user

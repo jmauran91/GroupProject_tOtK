@@ -7,7 +7,7 @@ feature "user sees releases" do
 
     visit releases_path
 
-    expect(page).to have_content "Welcome the Kensai Music Review DB"
+    expect(page).to have_content "Welcome to the Kensai Music DB"
 
     expect(akalife.artist).to have_content "Beethoven"
 
