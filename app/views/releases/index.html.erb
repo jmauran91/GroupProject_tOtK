@@ -1,0 +1,35 @@
+<h1> Welcome the Kensai Music Review DB </h1>
+
+
+<div class='sidebar'>
+</div>
+
+<div class='search_bar row large-3'>
+  <h3> Search Bar goes here </h3>
+</div>
+
+<div class='row large-9'>
+</div>
+
+<div class='row large-3'>
+  <h3> Sort By goes here </h3>
+</div>
+
+<div class='release_list large-9'>
+  <% @releases.each do |release| %>
+    <ul>
+      <li> <%= link_to release.title, release_path(release) %>
+            <%= release.artist %>
+          <img src= "<%=release.album_art_url%>" />
+      </li>
+    </ul>
+    <% end %>
+  </div>
+
+  <div>
+    <p> <%= link_to "Add a New Release", new_release_path %> </p>
+    </div>
+
+
+
+<%= stylesheet_link_tag "release_index.css" %>
