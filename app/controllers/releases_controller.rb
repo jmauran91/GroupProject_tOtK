@@ -18,14 +18,14 @@ class ReleasesController < ApplicationController
       @release = Release.new(release_params)
       @release.user = @user
       @release.save
+      redirect_to root_path
+
    else
       binding.pry
       flash[:alert] = 'You must be logged in to do that'
 
       redirect_to new_user_session_path
     end
-
-    redirect_to root_path
   end
 
   private
