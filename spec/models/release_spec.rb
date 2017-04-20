@@ -5,8 +5,8 @@ RSpec.describe Release, type: :model do
 
   it { should have_valid(:artist).when('testname', 'test_name') }
 
-  it { should have_valid(:year).when(1986, 7776) }
-  it { should_not have_valid(:year).when('dobblit') }
+  it { should have_valid(:year).when(1986, 2017) }
+  it { should_not have_valid(:year).when('dobblit', 20163, 343) }
 
   it { should have_valid(:no_of_tracks).when(9) }
   it { should_not have_valid(:no_of_tracks).when('many_tracks') }
