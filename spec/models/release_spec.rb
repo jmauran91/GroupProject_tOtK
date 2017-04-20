@@ -4,13 +4,11 @@ require 'rails_helper'
 RSpec.describe Release, type: :model do
 
   it { should have_valid(:title).when('testname', 'test_name') }
-  it { should_not have_valid(:title).when('my..name', 123) }
 
   it { should have_valid(:artist).when('testname', 'test_name') }
-  it { should_not have_valid(:artist).when('my..name', 123) }
 
   it { should have_valid(:year).when(1986, 7776) }
-  it { should_not have_valid(:year).when('1966', 'hello_there') }
+  it { should_not have_valid(:year).when('dobblit') }
 
   it { should have_valid(:no_of_tracks).when(9) }
   it { should_not have_valid(:no_of_tracks).when('many_tracks') }

@@ -1,9 +1,9 @@
 require 'rails_helper'
 
 feature "user signs in" do
-  pending "clicks sign in and fills in the fields and signs in" do
+  scenario "clicks sign in and fills in the fields and signs in" do
 
-    visit new_user_session
+    visit new_user_session_path
 
     fill_in "Username", with: "Johnboy91"
     fill_in "Email", with: "Highflyer87@gmail.com"

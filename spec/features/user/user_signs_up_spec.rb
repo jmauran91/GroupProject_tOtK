@@ -14,7 +14,7 @@ feature 'user signs up' do
   # If I provide invalid information I will receive error messages regarding
   # why my form failed and it should retain my information
 
-  pending 'user provides valid information in the sign-up form' do
+  scenario 'user provides valid information in the sign-up form' do
     visit root_path
     expect(page).to have_content "Sign Up"
 
@@ -30,7 +30,7 @@ feature 'user signs up' do
     expect(page).to_not have_content "Sign Up"
   end
 
-  pending 'user provides no information in sign-up form' do
+  scenario 'user provides no information in sign-up form' do
     visit root_path
 
     click_link "Sign Up"
@@ -42,7 +42,7 @@ feature 'user signs up' do
     expect(page).to have_content "Sign Up"
   end
 
-  pending 'user provides invalid username, email, and password' do
+  scenario 'user provides invalid username, email, and password' do
     visit root_path
 
     click_link "Sign Up"
@@ -58,7 +58,7 @@ feature 'user signs up' do
     expect(page).to have_content "Sign Up"
   end
 
-  pending "user's confirmation password different from password" do
+  scenario "user's confirmation password different from password" do
     visit root_path
 
     click_link "Sign Up"
