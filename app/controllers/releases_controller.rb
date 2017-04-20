@@ -38,7 +38,8 @@ class ReleasesController < ApplicationController
       :year,
       :studio,
       :no_of_tracks,
-      :album_art_url
+      :album_art_url,
+      :description
     )
   end
 end

@@ -8,6 +8,7 @@ class CreateReleases < ActiveRecord::Migration[5.0]
       t.string :studio
       t.integer :no_of_tracks, null: false
       t.string :album_art_url, null: false
+      t.string :description
 
       t.belongs_to :user
 
