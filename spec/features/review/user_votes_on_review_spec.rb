@@ -1,8 +1,7 @@
 require 'rails_helper'
 
-feature "user can submit reviews" do
-  scenario "user visits the release page and submits a review and sees it" do
-    danger = User.create!(username: 'jbone91', email: 'johnmauran1@gmail.com', password: 'noneofyourbusiness')
+feature "user can vote on reviews" do
+  scenario "user visits the release page and votes on a review" do
 
     visit new_user_session_path
     fill_in 'Email', with: 'johnmauran1@gmail.com'
@@ -10,7 +9,7 @@ feature "user can submit reviews" do
     click_button 'Log in'
 
     new_release = Release.create!(title: 'Album', artist: 'Artist', year: 1987, studio: 'Mororsion', no_of_tracks: 9, album_art_url: 'http://tasteofcountry.com/files/2011/03/ralph-mooney.jpg', user: danger)
-    new_review = Review.create!(rating: 91, body: 'lsjdfoiwennwef', votes: 1, user: danger, release: new_release)
+    new_review = Review.create!(rating: 91, body: 'lsjdfoiwennwef', votes: 1, user_id: 1, release: new_release)
 
     visit new_user_session_path
     fill_in 'Email', with: 'johnmauran1@gmail.com'
