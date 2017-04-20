@@ -1,3 +1,5 @@
+require 'rails_helper'
+
 feature "user submits a new release" do
   scenario "user visits the new release form page and submits a release" do
     User.create!(username: 'jbone91', email: 'johnmauran1@gmail.com', password: 'noneofyourbusiness')
@@ -6,7 +8,7 @@ feature "user submits a new release" do
     fill_in 'Password', with: 'noneofyourbusiness'
     click_button 'Log in'
 
-    visit new_release_path
+    click_link "Add Release"
     expect(page).to have_content "New Release Form"
 
     fill_in 'Title', with: 'Great Album'
@@ -29,7 +31,7 @@ feature "user submits a new release" do
     fill_in 'Password', with: 'noneofyourbusiness'
     click_button 'Log in'
 
-    visit new_release_path
+    click_link "Add Release"
     click_button 'Add Release'
 
     expect(page).to have_content "Title can't be blank"

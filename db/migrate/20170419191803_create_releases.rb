@@ -10,7 +10,7 @@ class CreateReleases < ActiveRecord::Migration[5.0]
       t.string :album_art_url, null: false
       t.string :description
 
-      t.belongs_to :user
+      t.belongs_to :user, index: true
 
       t.timestamps null: false
     end
