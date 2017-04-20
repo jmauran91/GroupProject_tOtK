@@ -1,6 +1,4 @@
 require 'rails_helper'
-
-
 RSpec.describe Release, type: :model do
 
   it { should have_valid(:title).when('testname', 'test_name') }
