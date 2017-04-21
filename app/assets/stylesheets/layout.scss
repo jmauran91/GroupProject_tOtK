@@ -1,3 +1,16 @@
-.menu-text {
-  text-decoration:none
+@import 'settings';
+.flash {
+  padding: 0.5em;
+  background-color: #3B9089;
+  color: $white;
+  font-size: 20px;
+  text-align: center;
+}
+
+.top-bar {
+  color: #F10404;
+}
+
+.body-background {
+  background-image: url(https://wallpaperscraft.com/image/wave_red_lines_light_20065_1920x1080.jpg);
 }

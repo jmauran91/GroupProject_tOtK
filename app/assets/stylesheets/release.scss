@@ -1,0 +1,17 @@
+@import 'settings';
+
+.release-form {
+  background-color: $white;
+  color: $black;
+  padding: 2em;
+  border-radius: 10px;
+  opacity: 0.9
+
+}
+
+.release-header {
+  color: $white;
+  text-align: center;
+  padding: 2em;
+  font-weight: bold;
+}
