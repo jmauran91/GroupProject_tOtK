@@ -2,8 +2,11 @@ require 'rails_helper'
 
 feature "user votes on review" do
   scenario "user votes on a review and sees it" do
-    danger = User.create(username: "Johnboy91", email: "Highflyer87@gmail.com", password: "most_generic_pword")
-    akalife = Release.create!(title: 'Symphony no. 6', artist: 'Beethoven', year: 1900, studio: 'morrison', no_of_tracks: 3, album_art_url: 'http://www.beethovenphoto.com', user: danger)
+    danger = User.create(username: "Johnboy91", email: "Highflyer87@gmail.com",
+              password: "most_generic_pword")
+    akalife = Release.create!(title: 'Symphony no. 6', artist: 'Beethoven',
+                year: 1900, studio: 'morrison', no_of_tracks: 3,
+                  album_art_url: 'http://www.beethovenphoto.com', user: danger)
 
     visit root_path
 
