@@ -1,0 +1,22 @@
+<h1> New Review Form </h1>
+
+<%= form_for [ @release, @review ] do |f| %>
+  <div class="field">
+    <%= f.label :rating %> <br />
+    <%= f.text_field :rating %>
+  </div>
+
+  <div class="field">
+    <%= f.label :body %><br />
+    <%= f.text_field :body %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Add"%>
+  </div>
+<% end %>
+
+
+
+<p>
+<%= link_to 'Home', root_path %>
+</p>

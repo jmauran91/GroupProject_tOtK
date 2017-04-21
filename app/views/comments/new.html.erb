@@ -1,0 +1,15 @@
+<h1> New Comment Form </h1>
+
+<%= form_for [ @review, @comment ] do |f| %>
+  <div class="field">
+    <%= f.label :body %> <br />
+    <%= f.text_field :body %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Add"%>
+  </div>
+<% end %>
+
+<p>
+<%= link_to 'Home', root_path %>
+</p>
