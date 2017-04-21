@@ -50,7 +50,7 @@ $global-font-size: 100%;
 $global-width: rem-calc(1200);
 $global-lineheight: 1.5;
 $foundation-palette: (
-  primary: #F10404,
+  primary: #f10404,
   secondary: #0a0a0a,
   success: #3adb76,
   warning: #ffae00,
@@ -60,7 +60,7 @@ $light-gray: #e6e6e6;
 $medium-gray: #cacaca;
 $dark-gray: #8a8a8a;
 $black: #0a0a0a;
-$white: #fefefe;
+$white: #ffffff;
 $body-background: $black;
 $body-font-color: $white;
 $body-font-family: 'Michroma', sans-serif;
@@ -280,7 +280,7 @@ $callout-margin: 0 0 1rem 0;
 $callout-padding: 1rem;
 $callout-font-color: $body-font-color;
 $callout-font-color-alt: $body-background;
-$callout-radius: $global-radius;
+$callout-radius: 0.5rem;
 $callout-link-tint: 30%;
 
 // 14. Card
@@ -373,8 +373,8 @@ $select-triangle-color: $dark-gray;
 $select-radius: $global-radius;
 $input-color: $black;
 $input-placeholder-color: $medium-gray;
-$input-font-family: inherit;
-$input-font-size: rem-calc(16);
+$input-font-family: $secondary-font-family;
+$input-font-size: rem-calc(20);
 $input-font-weight: $global-weight-normal;
 $input-background: $white;
 $input-background-focus: $white;
