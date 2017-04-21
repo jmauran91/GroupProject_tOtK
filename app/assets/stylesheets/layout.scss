@@ -1,16 +1,17 @@
-@import 'settings';
+@import "settings";
+
 .flash {
-  padding: 0.5em;
-  background-color: #3B9089;
+  background-color: $primary-color;
   color: $white;
   font-size: 20px;
+  padding: 0.5em;
   text-align: center;
 }
 
 .top-bar {
-  color: #F10404;
+  color: $secondary-color;
 }
 
 .body-background {
-  background-image: url(https://wallpaperscraft.com/image/wave_red_lines_light_20065_1920x1080.jpg);
+  background-image: url('/assets/wave_red_lines_light_20065_1920x1080.jpg');
 }
