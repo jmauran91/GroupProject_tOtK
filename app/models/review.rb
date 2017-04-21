@@ -1,6 +1,6 @@
 class Review < ApplicationRecord
   validates :body, presence: true
-  validates :rating, numericality: true
+  validates :rating, numericality: true, :inclusion => 1..100
   validates :votes, numericality: true
 
   belongs_to :user

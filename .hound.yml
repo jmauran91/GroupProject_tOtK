@@ -2,3 +2,4 @@
 
 ruby:
   config_file: .rubocop.yml
+  config_file: .jshintrc
