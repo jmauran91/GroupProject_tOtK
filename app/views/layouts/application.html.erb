@@ -1,38 +1,62 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <title>GroupProject</title>
-    <%= csrf_meta_tags %>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <%= stylesheet_link_tag    'application', media: 'all' %>
-    <%= javascript_include_tag 'application' %>
+    <title><%= content_for?(:title) ? yield(:title) : "Kensai Music DB" %></title>
+
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
   </head>
 
   <body>
-    <nav>
-      <ul>
+    <div class="top-bar">
+  <div class="top-bar-left">
+    <ul class="dropdown menu" data-dropdown-menu>
+      <li class="menu-text"><%= link_to "Kensai Music DB", root_path %></li>
+      <li>
+        <a href="#">One</a>
+        <ul class="menu vertical">
+          <li><a href="#">One</a></li>
+          <li><a href="#">Two</a></li>
+          <li><a href="#">Three</a></li>
+        </ul>
+      </li>
+      <li><a href="#">Two</a></li>
+      <li><a href="#">Three</a></li>
+    </ul>
+  </div>
+  <div class="top-bar-right">
+
+    <ul class="menu">
         <% if user_signed_in? %>
-          <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
           <li><%= link_to "My Profile", user_path(current_user) %> </li>
+          <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
         <% else %>
           <li><%= link_to "Sign Up", new_user_registration_path %></li>
           <li><%= link_to "Sign In", new_user_session_path %></li>
         <% end %>
-      </ul>
-    </nav>
-    <% if flash.any? %>
-      <div class="flash">
-        <div class="container">
-          <% if flash[:notice] %>
-            <%= flash[:notice] %>
-          <% end %>
-          <% if flash[:alert] %>
-            <%= flash[:alert] %>
-          <% end %>
-        </div>
-      </div>
-    <% end %>
+      <li><input type="search" placeholder="Search"></li>
+      <li><button type="button" class="button">Search</button></li>
+    </ul>
+  </div>
+</div>
+<% if flash.any? %>
+  <div class="flash">
+    <div class="container">
+      <% if flash[:notice] %>
+        <%= flash[:notice] %>
+      <% end %>
+      <% if flash[:alert] %>
+        <%= flash[:alert] %>
+      <% end %>
+    </div>
+  </div>
+<% end %>
 
     <%= yield %>
+
   </body>
 </html>
