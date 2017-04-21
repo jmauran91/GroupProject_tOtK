@@ -1,0 +1,22 @@
+@import "settings";
+
+.release-form {
+  background-color: $white;
+  border-radius: 10px;
+  color: $black;
+  padding: 2em;
+
+}
+
+.release-header {
+  color: $white;
+  font-weight: bold;
+  padding: 2em;
+  text-align: center;
+}
+
+#error_explanation {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 20px;
+  text-align: center;
+}
