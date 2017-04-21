@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 20170420192912) do
     t.string   "studio"
     t.integer  "no_of_tracks",  null: false
     t.string   "album_art_url", null: false
+    t.string   "description"
     t.integer  "user_id"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
