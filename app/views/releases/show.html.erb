@@ -21,6 +21,17 @@
           Votes: <%= review.votes %>
           <%= f.submit "Downvote"%> <br />
           <%end%>
+      <% @comments.each do |comment| %>
+      <ul>
+        <li>
+           Comment: <%= comment.body %>
+           <br />
+           Written by: <%= comment.user.username %>
+         </li>
+         <br />
+      </ul>
+      <% end %>
+      <%= link_to 'Add Comment', new_review_comment_path(review) %>
     </li>
   </ul>
   <% end %>

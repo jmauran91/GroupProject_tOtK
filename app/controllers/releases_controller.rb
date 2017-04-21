@@ -7,6 +7,7 @@ class ReleasesController < ApplicationController
     @release = Release.find(params[:id])
     @reviews = @release.reviews
     @review = Review.new
+    @comments = Comment.all
   end
 
   def new
