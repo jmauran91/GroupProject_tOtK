@@ -29,7 +29,7 @@ feature "user submits comment" do
   scenario "unauthenticated user can't add comment" do
     danger = User.create(username: "Johnboy91", email: "Highflyer87@gmail.com", password: "most_generic_pword")
     akalife = Release.create!(title: 'Symphony no. 6', artist: 'Beethoven', year: 1900, studio: 'morrison', no_of_tracks: 3, album_art_url: 'http://www.beethovenphoto.com', user: danger)
-    revrev = Review.create!(rating: 67, body: 'honestly subpar', user: danger, release: akalife)
+    Review.create!(rating: 67, body: 'honestly subpar', user: danger, release: akalife)
 
 
     visit release_path(akalife)

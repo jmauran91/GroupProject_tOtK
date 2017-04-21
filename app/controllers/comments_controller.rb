@@ -35,5 +35,4 @@ class CommentsController < ApplicationController
       :body
     )
   end
-
 end
