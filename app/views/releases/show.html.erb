@@ -17,9 +17,9 @@
       <br />
       <%= form_for [@release, @review], url: release_review_path(@release, review), method: :patch,
         html: { class: "review-vote" } do |f| %>
-          <%= f.submit "Upvote" %> <br />
+          <%= f.submit "Upvote"%> <br />
           Votes: <%= review.votes %>
-          <%= f.submit "Downvote" %> <br />
+          <%= f.submit "Downvote"%> <br />
           <%end%>
     </li>
   </ul>
