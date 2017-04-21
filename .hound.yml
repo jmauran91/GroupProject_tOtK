@@ -1,4 +1,5 @@
 # .hound.yml
 
 ruby:
-  config_file: .rubocop.yml, .jshintrc
+  config_file: .rubocop.yml
+  config_file: .jshintrc
