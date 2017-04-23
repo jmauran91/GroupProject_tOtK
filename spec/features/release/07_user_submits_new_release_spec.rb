@@ -8,7 +8,7 @@ feature "user submits a new release" do
     fill_in 'Password', with: 'noneofyourbusiness'
     click_button 'Log in'
 
-    click_link "Add Release"
+    click_link "Add a Release"
     expect(page).to have_content "New Release Form"
 
     fill_in 'Title', with: 'Great Album'
@@ -31,7 +31,7 @@ feature "user submits a new release" do
     fill_in 'Password', with: 'noneofyourbusiness'
     click_button 'Log in'
 
-    click_link "Add Release"
+    click_link "Add a Release"
     click_button 'Add Release'
 
     expect(page).to have_content "Title can't be blank"

@@ -1,11 +1,21 @@
 @import "settings";
 
+.genres {
+  z-index: 2;
+}
+
+.slider {
+  z-index: 1;
+}
+
 .release-form {
   background-color: $white;
   border-radius: 10px;
   color: $black;
   padding: 2em;
-
+  label {
+    color: $black;
+  }
 }
 
 .release-header {
