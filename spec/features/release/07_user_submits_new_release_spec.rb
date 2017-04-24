@@ -2,7 +2,11 @@ require 'rails_helper'
 
 feature "user submits a new release" do
   scenario "user visits the new release form page and submits a release" do
-    User.create!(username: 'jbone91', email: 'johnmauran1@gmail.com', password: 'noneofyourbusiness')
+    User.create!(
+      username: 'jbone91',
+      email: 'johnmauran1@gmail.com',
+      password: 'noneofyourbusiness'
+      )
     visit new_user_session_path
     fill_in 'Email', with: 'johnmauran1@gmail.com'
     fill_in 'Password', with: 'noneofyourbusiness'
@@ -18,12 +22,14 @@ feature "user submits a new release" do
     fill_in 'Studio', with: 'Great Studio'
     fill_in 'No of tracks', with: 9
     fill_in 'Album art url', with: 'http://tasteofcountry.com/files/2011/03/ralph-mooney.jpg'
-    check 'Alternative'
-    check 'Easy Listening'
+    page.check 'Blues'
+    page.check 'Jazz'
 
     click_button 'Add Release'
 
     expect(page).to have_content 'Great Album'
+    expect(page).to have_content 'Blues'
+    expect(page).to have_content 'Jazz'
   end
 
   scenario "user provides invalid information" do
@@ -32,10 +38,8 @@ feature "user submits a new release" do
     fill_in 'Email', with: 'johnmauran1@gmail.com'
     fill_in 'Password', with: 'noneofyourbusiness'
     click_button 'Log in'
-
     click_link "Add Release"
     click_button 'Add Release'
-
     expect(page).to have_content "Title can't be blank"
     expect(page).to have_content "Artist can't be blank"
     expect(page).to have_content "Year can't be blank"

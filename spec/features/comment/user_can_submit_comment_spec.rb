@@ -2,8 +2,21 @@ require 'rails_helper'
 
 feature "user submits comment" do
   scenario "user submits a comment and sees it" do
-    danger = User.create(username: "Johnboy91", email: "Highflyer87@gmail.com", password: "most_generic_pword")
-    akalife = Release.create!(title: 'Symphony no. 6', artist: 'Beethoven', year: 1900, studio: 'morrison', no_of_tracks: 3, album_art_url: 'http://www.beethovenphoto.com', user: danger)
+    danger = User.create(
+      username: "Johnboy91",
+      email: "Highflyer87@gmail.com",
+      password: "most_generic_pword"
+      )
+    akalife = Release.create!(
+      title: 'Symphony no. 6',
+      artist: 'Beethoven', performer: "",
+      year: 1900,
+      studio: 'morrison',
+      no_of_tracks: 3,
+      album_art_url: 'http://www.beethovenphoto.com',
+      description: "",
+      user: danger
+    )
 
     visit root_path
 
@@ -27,8 +40,21 @@ feature "user submits comment" do
     expect(page).to have_content "lengthening"
   end
   scenario "unauthenticated user can't add comment" do
-    danger = User.create(username: "Johnboy91", email: "Highflyer87@gmail.com", password: "most_generic_pword")
-    akalife = Release.create!(title: 'Symphony no. 6', artist: 'Beethoven', year: 1900, studio: 'morrison', no_of_tracks: 3, album_art_url: 'http://www.beethovenphoto.com', user: danger)
+    danger = User.create(
+      username: "Johnboy91",
+      email: "Highflyer87@gmail.com",
+      password: "most_generic_pword"
+      )
+    akalife = Release.create!(
+      title: 'Symphony no. 6',
+      artist: 'Beethoven', performer: "",
+      year: 1900,
+      studio: 'morrison',
+      no_of_tracks: 3,
+      album_art_url: 'http://www.beethovenphoto.com',
+      description: "",
+      user: danger
+    )
     Review.create!(rating: 67, body: 'honestly subpar', user: danger, release: akalife)
 
 
