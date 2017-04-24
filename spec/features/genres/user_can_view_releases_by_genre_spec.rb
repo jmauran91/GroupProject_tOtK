@@ -12,7 +12,7 @@ feature 'The user can view releases by genre' do
     fill_in 'Password', with: 'noneofyourbusiness'
     click_button 'Log in'
 
-    click_link "Add Release"
+    click_link "Add a Release"
     expect(page).to have_content "New Release Form"
 
     fill_in 'Title', with: 'Great Album'
