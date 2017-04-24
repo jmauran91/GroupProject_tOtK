@@ -22,26 +22,11 @@
       <li>
         <a href="#">Reviews</a>
         <ul class="menu vertical genres">
-          <li><a href="#">Alternative</a></li>
-          <li><a href="#">Blues</a></li>
-          <li><a href="#">Classical</a></li>
-          <li><a href="#">Country</a></li>
-          <li><a href="#">Dance</a></li>
-          <li><a href="#">Easy Listening</a></li>
-          <li><a href="#">Electronic</a></li>
-          <li><a href="#">European (Folk/Pop)</a></li>
-          <li><a href="#">Hip Hop/Rap</a></li>
-          <li><a href="#">Indie Pop</a></li>
-          <li><a href="#">Inspirational/Gospel</a></li>
-          <li><a href="#">Jazz</a></li>
-          <li><a href="#">Latin</a></li>
-          <li><a href="#">New Age</a></li>
-          <li><a href="#">Opera</a></li>
-          <li><a href="#">Pop</a></li>
-          <li><a href="#">R&B/Soul</a></li>
-          <li><a href="#">Reggae</a></li>
-          <li><a href="#">Rock</a></li>
-          <li><a href="#">World</a></li>
+          <% genres = Genre.all %>
+          <% genres.each do |genre|  %>
+            <l1><%= link_to genre.name, (genre) %></l1><br />
+          <% end %>
+
         </ul>
       </li>
       <li><%= link_to "Add a Release", new_release_path%></li>

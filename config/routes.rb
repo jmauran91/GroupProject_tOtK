@@ -8,6 +8,8 @@ Rails.application.routes.draw do
     resources :comments
   end
   resources :users, only: [:show]
+  resources :genres, only: [:show]
+
 
   root "releases#index"
 end

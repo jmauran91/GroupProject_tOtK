@@ -1,0 +1,14 @@
+<h1><%= @genre.name %></h1>
+<% unless @releases.empty? %>
+  <% @releases.each do |release| %>
+  <ul>
+    <li><img src="<%=release.album_art_url%>" height='400' width='600'/>
+      <%= link_to release.title, release_path(release) %>
+      <%= release.artist %>
+     </li>
+  </ul>
+  <% end %>
+<% else %>
+  <h2>There are no releases for this genre yet</h2>
+  <%= link_to "Be the first to add one", new_release_path %>
+<% end %>
