@@ -18,6 +18,8 @@ feature "user submits a new release" do
     fill_in 'Studio', with: 'Great Studio'
     fill_in 'No of tracks', with: 9
     fill_in 'Album art url', with: 'http://tasteofcountry.com/files/2011/03/ralph-mooney.jpg'
+    check 'Alternative'
+    check 'Easy Listening'
 
     click_button 'Add Release'
 

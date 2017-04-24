@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170421141527) do
+ActiveRecord::Schema.define(version: 20170424135706) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,21 @@ ActiveRecord::Schema.define(version: 20170421141527) do
     t.datetime "updated_at", null: false
     t.index ["review_id"], name: "index_comments_on_review_id", using: :btree
     t.index ["user_id"], name: "index_comments_on_user_id", using: :btree
+  end
+
+  create_table "genres", force: :cascade do |t|
+    t.string   "name",       null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "release_genres", force: :cascade do |t|
+    t.integer  "release_id"
+    t.integer  "genre_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["genre_id"], name: "index_release_genres_on_genre_id", using: :btree
+    t.index ["release_id"], name: "index_release_genres_on_release_id", using: :btree
   end
 
   create_table "releases", force: :cascade do |t|
@@ -42,7 +57,7 @@ ActiveRecord::Schema.define(version: 20170421141527) do
 
   create_table "reviews", force: :cascade do |t|
     t.string   "body",                   null: false
-    t.integer  "rating",                 null: false
+    t.float    "rating",                 null: false
     t.integer  "votes",      default: 0
     t.integer  "user_id"
     t.integer  "release_id"
