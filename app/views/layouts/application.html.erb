@@ -26,6 +26,7 @@
           <% genres.each do |genre|  %>
             <l1><%= link_to genre.name, (genre) %></l1><br />
           <% end %>
+
         </ul>
       </li>
       <li><%= link_to "Add a Release", new_release_path%></li>

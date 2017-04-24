@@ -1,5 +1,8 @@
+@import "settings";
+
 .devise-new {
   border-style: inset;
   margin-top: 2em;
   padding: 2em;
+  background: $black;
 }
