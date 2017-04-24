@@ -1,4 +1,5 @@
-<% if @releases %>
+<h1><%= @genre.name %></h1>
+<% unless @releases.empty? %>
   <% @releases.each do |release| %>
   <ul>
     <li><img src="<%=release.album_art_url%>" height='400' width='600'/>

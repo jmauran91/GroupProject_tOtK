@@ -1,4 +1,4 @@
-class GenreController < ApplicationController
+class GenresController < ApplicationController
   before_action :set_genre, only: [:show]
 
   def show
