@@ -1,6 +1,32 @@
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../../config/environment', __FILE__)
+genres = [
+  "Alternative",
+  "Blues",
+  "Classical",
+  "Country",
+  "Dance",
+  "Easy Listening",
+  "Electronic",
+  "European (Folk/Pop)",
+  "Hip Hop/Rap",
+  "Indie Pop",
+  "Inspirational/Gospel",
+  "Jazz",
+  "Latin",
+  "New Age",
+  "Opera",
+  "Pop",
+  "R&B/Soul",
+  "Reggae",
+  "Rock",
+  "World"
+]
+
+genres.each do |genre|
+  Genre.create(name: genre)
+end
 # Prevent database truncation if the environment is production
 abort("The Rails environment is running in production mode!") if Rails.env.production?
 require 'spec_helper'
