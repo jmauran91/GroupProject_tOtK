@@ -49,6 +49,10 @@
         </div>
 
         <div class="field">
+          <%= f.collection_check_boxes :genre_ids, @genre_collection, :id, :name %>
+        </div>
+
+        <div class="field">
           <%= f.label :description %> <br />
           <%= f.text_area :description, placeholder: "Optional"  %>
         </div>

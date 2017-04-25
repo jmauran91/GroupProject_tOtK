@@ -3,9 +3,17 @@ feature "user submits review" do
   scenario "submits a new review and sees it" do
     danger = User.create(username: "Johnboy91", email: "Highflyer87@gmail.com",
                 password: "most_generic_pword")
-    akalife = Release.create!(title: 'Symphony no. 6', artist: 'Beethoven',
-              year: 1900, studio: 'morrison', no_of_tracks: 3,
-               album_art_url: 'http://www.beethovenphoto.com', user: danger)
+    akalife = Release.create!(
+      title: 'Symphony no. 6',
+      artist: 'Beethoven',
+      performer: '',
+      year: 1900,
+      studio: 'morrison',
+      no_of_tracks: 3,
+      album_art_url: 'http://www.beethovenphoto.com',
+      description: '',
+      user: danger
+      )
 
     visit root_path
 

@@ -4,9 +4,17 @@ feature "user votes on review" do
   scenario "user votes on a review and sees it" do
     danger = User.create(username: "Johnboy91", email: "Highflyer87@gmail.com",
               password: "most_generic_pword")
-    akalife = Release.create!(title: 'Symphony no. 6', artist: 'Beethoven',
-                year: 1900, studio: 'morrison', no_of_tracks: 3,
-                  album_art_url: 'http://www.beethovenphoto.com', user: danger)
+    akalife = Release.create!(
+      title: 'Symphony no. 6',
+      artist: 'Beethoven',
+      performer: '',
+      year: 1900,
+      studio: 'morrison',
+      no_of_tracks: 3,
+      album_art_url: 'http://www.beethovenphoto.com',
+      description: '',
+      user: danger
+      )
 
     visit root_path
 
@@ -17,7 +25,7 @@ feature "user votes on review" do
 
     visit release_path(akalife)
 
-    click_link "Add Review"
+    click_link "Add a Review"
     fill_in "Rating", with: 91
     fill_in "Body", with: 'I loved this'
 
