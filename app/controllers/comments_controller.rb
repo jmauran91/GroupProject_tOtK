@@ -28,7 +28,7 @@ class CommentsController < ApplicationController
   def edit
     @comment = Comment.find(params[:id])
     @review = Review.find(params[:review_id])
-    @release = Release.find(@review.release.id)
+    @release = Release.find(@review.release_id)
     @release_genres = @release.genres
   end
 
@@ -46,8 +46,8 @@ class CommentsController < ApplicationController
 
   def destroy
     comment = Comment.find(params[:id])
-    review = Review.find(params[:review_id])
-    release = Release.find(review.release.id)
+    review = Review.find(comment.review_id)
+    release = Release.find(review.release_id)
     comment.destroy
     flash[:notice] = "Comment deleted"
     redirect_to release_path(release)

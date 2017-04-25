@@ -36,19 +36,14 @@ class ReviewsController < ApplicationController
   end
 
   def update
-    if current_user
       @review = Review.find(params[:id])
       release = Release.find(@review.release)
       if @review.update(review_params)
         flash[:notice] = "Review successfully updated"
+        redirect_to release_path(release)
       else
         render :edit
       end
-      redirect_to release_path(release)
-    else
-      flash[:notice] = "You must be logged in to do that"
-      redirect_to new_user_session_path
-    end
   end
 
   def destroy
