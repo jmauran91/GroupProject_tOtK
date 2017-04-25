@@ -5,6 +5,11 @@
 <div class="row">
   <div class="column small-12 large-6">
     <img src="<%=@release.album_art_url%>" height="400" width="400"/>
+    <% if current_user == @release.user %>
+    <div class="row">
+      <%= link_to "Edit", edit_release_path(@release) %>
+    </div>
+    <% end %>
   </div>
   <div class="column small-12 large-6">
     <% unless @release.performer.empty? %>
@@ -22,7 +27,7 @@
     <% unless @release_genres.empty? %>
       <h3>Genre(s): </h3>
       <% @release_genres.each do |genre| %>
-        <%= link_to genre.name, genre_path(genre) %> |
+        | <%= link_to genre.name, genre_path(genre) %> |
       <% end %>
     <% end %>
 
@@ -45,11 +50,11 @@
   <% @reviews.each do |review| %>
   <ul>
     <li>
-      Review Rating: <%=review.rating%>
+      Rating: <%=review.rating%>
       <br />
-      Review Author: <%= review.user.username %>
+      Author: <%= review.user.username %>
       <br />
-      Review Body: <%=review.body%>
+      Review: <%=review.body%>
       <br />
       <%= form_for [@release, @review], url: release_review_path(@release, review), method: :patch,
         html: { class: "review-vote" } do |f| %>
@@ -57,7 +62,7 @@
           Votes: <%= review.votes %>
           <%= f.submit "Downvote"%> <br />
           <%end%>
-      <% @comments.each do |comment| %>
+      <% review.comments.each do |comment| %>
       <ul>
         <li>
            Comment: <%= comment.body %>

@@ -1,0 +1,74 @@
+<div class="row">
+  <div class="release-header">
+    <h1 class="small-12 large-8 small-centered"> Edit This Release </h1>
+  </div>
+</div>
+    <div class="row">
+      <div class="small-12 large-8 small-centered">
+        <%= form_for(@release) do |f| %>
+          <% if @release.errors.any? %>
+            <div id="error_explanation" class="callout warning">
+              <h4><%= pluralize(@release.errors.count, "error") %> prohibited this release from being saved:</h4>
+
+              <ul class="no-bullet">
+              <% @release.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+              </ul>
+            </div>
+          <% end %>
+          <div class="release-form">
+            <div class="field">
+              <%= f.label :title %><br />
+              <%= f.text_field :title, :input_html => { :value => @release.title } %>
+            </div>
+
+            <div class="field">
+              <%= f.label :artist %><br />
+              <%= f.text_field :artist, :input_html => { :value => @release.artist } %>
+            </div>
+
+            <div class="field">
+              <%= f.label :performer %> <br />
+              <%= f.text_field :performer, :input_html => { :value => @release.performer } %>
+            </div>
+
+            <div class="field">
+              <%= f.label :year %> <br />
+              <%= f.text_field :year, :input_html => { :value => @release.year } %>
+            </div>
+
+            <div class="field">
+              <%= f.label :studio %> <br />
+              <%= f.text_field :studio, :input_html => { :value => @release.studio } %>
+            </div>
+
+            <div class="field">
+              <%= f.label :no_of_tracks %> <br />
+              <%= f.text_field :no_of_tracks, :input_html => { :value => @release.no_of_tracks } %>
+            </div>
+
+            <div class="field">
+              <%= f.label :album_art_url %> <br />
+              <%= f.text_field :album_art_url, :input_html => { :value => @release.album_art_url } %>
+            </div>
+
+            <div class="field">
+              <%= f.collection_check_boxes :genre_ids, @genre_collection, :id, :name %>
+            </div>
+
+            <div class="field">
+              <%= f.label :description %>
+              <%= f.text_area :description, :input_html => { :value => @release.description } %>
+            </div>
+
+            <div class="actions">
+              <%= f.submit %>
+            </div>
+          <% end %>
+
+          <%= link_to 'Delete', @release, method: :delete, data: { confirm: 'Are you sure you want to delete this release?' } %> |
+          <%= link_to 'Back', releases_path(@release) %>
+        </div>
+      </div>
+    </div>
