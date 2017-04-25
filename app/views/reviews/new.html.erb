@@ -1,22 +1,62 @@
-<h1> New Review Form </h1>
+<div class="row">
+  <div class="small-centered">
+    <h1> Add Your Own Review </h1>
+  </div>
+</div>
 
-<%= form_for [ @release, @review ] do |f| %>
-  <div class="field">
-    <%= f.label :rating %> <br />
-    <%= f.text_field :rating %>
+<div class="row">
+  <div class="column small-12 large-6">
+    <img src="<%=@release.album_art_url%>" height="400" width="400"/>
+  </div>
+  <div class="column small-12 large-6">
+    <% unless @release.performer.empty? %>
+      <h4>Performed By: <%= @release.performer %></h4>
+    <% end %>
+
+    <h4>Year: <%= @release.year %></h4>
+
+    <% unless @release.studio.empty? %>
+      <h4>Studio: <%= @release.studio %></h4>
+    <% end %>
+
+    <h4>No. of Tracks: <%= @release.no_of_tracks %></h4>
+
+    <% unless @release_genres.empty? %>
+      <h4>Genre(s): </h4>
+      <% @release_genres.each do |genre| %>
+        | <%= link_to genre.name, genre_path(genre) %> |
+      <% end %>
+    <% end %>
+
+    <% unless @release.description.empty? %>
+    <h4> Description: </h4>
+    <p><%= @release.description %></p>
+    <% end %>
+
+  </div>
+</div>
+
+<div class="row">
+  <div class="release-form">
+    <%= form_for [ @release, @review ] do |f| %>
+      <div class="field">
+        <%= f.label :rating %> <br />
+        <%= f.text_field :rating %>
+      </div>
+
+      <div class="field">
+        <%= f.label :body %><br />
+        <%= f.text_field :body %>
+      </div>
+      <div class="actions">
+        <%= f.submit "Add"%>
+      </div>
+    <% end %>
+
+    <p>
+    <%= link_to 'Home', root_path %>
+    </p>
+
   </div>
 
-  <div class="field">
-    <%= f.label :body %><br />
-    <%= f.text_field :body %>
-  </div>
-  <div class="actions">
-    <%= f.submit "Add"%>
-  </div>
-<% end %>
-
-
-
-<p>
-<%= link_to 'Home', root_path %>
-</p>
+</div>

@@ -1,14 +1,15 @@
 Rails.application.routes.draw do
   devise_for :users
-  resources :releases, only: [:index, :show, :create, :new, :destroy] do
-    resources :reviews, only: [:show, :create, :new, :destroy, :patch, :update]
+  resources :releases, only: [:index, :show, :create, :new, :edit, :update, :destroy] do
+    resources :reviews, only: [:create, :new, :destroy, :edit, :update]
   end
 
-  resources :reviews do
-    resources :comments
+  resources :reviews, only: [:create, :new, :destroy, :edit, :update] do
+    resources :comments, only: [:new, :create, :edit, :update]
   end
   resources :users, only: [:show]
   resources :genres, only: [:show]
+  resources :comments, only: [:show, :update, :destroy]
 
 
   root "releases#index"

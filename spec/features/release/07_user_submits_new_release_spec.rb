@@ -2,6 +2,33 @@ require 'rails_helper'
 
 feature "user submits a new release" do
   scenario "user visits the new release form page and submits a release" do
+    genres = [
+      "Alternative",
+      "Blues",
+      "Classical",
+      "Country",
+      "Dance",
+      "Easy Listening",
+      "Electronic",
+      "European (Folk/Pop)",
+      "Hip Hop/Rap",
+      "Indie Pop",
+      "Inspirational/Gospel",
+      "Jazz",
+      "Latin",
+      "New Age",
+      "Opera",
+      "Pop",
+      "R&B/Soul",
+      "Reggae",
+      "Rock",
+      "World"
+    ]
+
+    genres.each do |genre|
+      Genre.create(name: genre)
+    end
+    
     User.create!(
       username: 'jbone91',
       email: 'johnmauran1@gmail.com',
@@ -40,7 +67,7 @@ feature "user submits a new release" do
     click_button 'Log in'
 
     click_link "Add a Release"
-    
+
     click_button 'Add Release'
     expect(page).to have_content "Title can't be blank"
     expect(page).to have_content "Artist can't be blank"

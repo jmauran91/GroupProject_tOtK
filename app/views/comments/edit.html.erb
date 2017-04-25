@@ -1,4 +1,3 @@
-<h1> New Comment Form </h1>
 <div class="row small-centered">
    <h1> <%=@release.title %> by <%= @release.artist %> </h1>
 </div>
@@ -50,19 +49,38 @@
 </div>
 
 <div class="row">
-  <div class="release-form">
-    <%= form_for [ @review, @comment ] do |f| %>
-      <div class="field">
-        <%= f.label :body %> <br />
-        <%= f.text_field :body %>
-      </div>
-      <div class="actions">
-        <%= f.submit "Add"%>
-      </div>
-    <% end %>
+  <div class="release-header">
+    <h1 class="small-12 large-8 small-centered"> Edit Comment </h1>
+  </div>
+</div>
+    <div class="row">
+      <div class="small-12 large-8 small-centered">
+        <%= form_for(@comment) do |f| %>
+          <% if @comment.errors.any? %>
+            <div id="error_explanation" class="callout warning">
+              <h4><%= pluralize(@comment.errors.count, "error") %> prohibited this comment from being saved:</h4>
 
-    <p>
-    <%= link_to 'Home', root_path %>
-    </p>
+              <ul class="no-bullet">
+              <% @comment.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+              </ul>
+            </div>
+          <% end %>
+
+  <div class="release-form">
+    <div class="field">
+      <%= f.label :body, 'Your Comment' %><br />
+      <%= f.text_field :body, :input_html => { :value => @comment.body} %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+  <% end %>
+
+    <%= link_to 'Delete', @comment, method: :delete, data: { confirm: 'Are you sure you want to delete this review?' } %> |
+    <%= link_to 'Back', release_path(@release) %>
+    </div>
   </div>
 </div>
