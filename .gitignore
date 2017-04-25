@@ -22,3 +22,8 @@
 
 
 .env
+
+#Ignore React Stuff
+/node_modules
+/app/assets/javascripts/bundle.js
+/react/coverage

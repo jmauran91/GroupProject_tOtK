@@ -1,6 +1,7 @@
 <div>
+<div>
 <h1> <%=@release.title %> by <%= @release.artist %> </h1>
-<img src="<%=@release.album_art_url%>" height="400" width="400"/>
+<img src="http://cps-static.rovicorp.com/3/JPG_500/MI0003/125/MI0003125784.jpg?partner=allrovi.com" height="400" width="400"/>
 </div>
 
 <h3> Description: </h3>
@@ -13,14 +14,18 @@
       <br />
       Review Author: <%= review.user.username %>
       <br />
+      <div class="row large-12">
       Review Body: <%=review.body%>
       <br />
-      <%= form_for [@release, @review], url: release_review_path(@release, review), method: :patch,
-        html: { class: "review-vote" } do |f| %>
-          <%= f.submit "Upvote"%> <br />
-          Votes: <%= review.votes %>
-          <%= f.submit "Downvote"%> <br />
-          <%end%>
+      <div id="app">
+        <!-- <%= form_for [@release, @review], url: release_review_path(@release, review), method: :patch,
+          html: { class: "review-vote" } do |f| %>
+            <%= f.submit "Upvote"%> <br />
+            Votes: <%= review.votes %>
+            <%= f.submit "Downvote"%> <br />
+            <%end%> -->
+      </div>
+    </div>
       <% @comments.each do |comment| %>
       <ul>
         <li>
@@ -41,3 +46,4 @@
 <p>
   <%= link_to 'Add Review', new_release_review_path(@release) %>
 </p>
+</div>
