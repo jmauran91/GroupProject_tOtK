@@ -23,9 +23,32 @@ class CommentsController < ApplicationController
     end
   end
 
-  def destroy
+  def edit
     @comment = Comment.find(params[:id])
-    @comment.destroy
+    @review = Review.find(params[:review_id])
+    @release = Release.find(@review.release.id)
+    @release_genres = @release.genres
+  end
+
+  def update
+    comment = Comment.find(params[:id])
+    release = comment.review.release
+    if comment.update(comment_params)
+      flash[:notice] = "Comment successfully updated"
+      redirect_to release_path(release)
+    else
+      @release_genres = release.genres
+      render :edit
+    end
+  end
+
+  def destroy
+    comment = Comment.find(params[:id])
+    review = Review.find(params[:review_id])
+    release = Release.find(review.release.id)
+    comment.destroy
+    flash[:notice] = "Comment deleted"
+    redirect_to release_path(release)
   end
 
   private

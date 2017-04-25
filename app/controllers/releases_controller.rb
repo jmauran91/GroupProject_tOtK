@@ -37,10 +37,6 @@ class ReleasesController < ApplicationController
   def edit
     @release = Release.find(params[:id])
     @genre_collection = Genre.all
-    if current_user != @release.user
-      flash[:notice] = 'You cannot edit a release submitted by another user.'
-      redirect_to release_path(@release)
-    end
   end
 
   def update

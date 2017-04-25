@@ -58,15 +58,9 @@
         Review: <%=review.body%>
         <br />
         <% if review.user == current_user %>
-            <%= link_to "Edit/Delete this post" %>
+            <%= link_to "Edit/Delete this Review", edit_release_review_path(@release, review) %>
         <% end %>
         <br />
-        <%= form_for [@release, @review], url: release_review_path(@release, review), method: :patch,
-          html: { class: "review-vote" } do |f| %>
-            <%= f.submit "Upvote"%> <br />
-            Votes: <%= review.votes %>
-            <%= f.submit "Downvote"%> <br />
-            <%end%>
           <br />
         <% review.comments.each do |comment| %>
         <ul>
@@ -75,6 +69,9 @@
                Comment: <%= comment.body %>
                <br />
                Written by: <%= comment.user.username %>
+               <% if current_user == comment.user %>
+               <p><%= link_to "Edit/Delete Comment", edit_review_comment_path(review, comment) %></p>
+               <% end %>
              </li>
              <br />
           </div>

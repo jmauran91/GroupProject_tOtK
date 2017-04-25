@@ -30,25 +30,37 @@ class ReviewsController < ApplicationController
   end
 
   def edit
+    @release = Release.find(params[:release_id])
     @review = Review.find(params[:id])
+    @release_genres = @release.genres
   end
 
   def update
     if current_user
       @review = Review.find(params[:id])
-      @release = Release.find(params[:release_id])
-      if params[:commit] == "Upvote"
-        @review.votes += 1
-        @review.save
-      elsif params[:commit] == "Downvote"
-        @review.votes -= 1
-        @review.save
+      release = Release.find(@review.release)
+      if @review.update(review_params)
+        flash[:notice] = "Review successfully updated"
+      else
+        render :edit
       end
-      redirect_to release_path(@release)
+      redirect_to release_path(release)
     else
       flash[:notice] = "You must be logged in to do that"
       redirect_to new_user_session_path
     end
+  end
+
+  def destroy
+    review = Review.find(params[:id])
+    release = Release.find(review.release)
+    comments = review.comments
+    comments.each do |comment|
+        comment.destroy
+    end
+    review.destroy
+    flash[:notice] = "Review successfully deleted"
+    redirect_to release_path(release)
   end
 
   private

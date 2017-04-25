@@ -7,11 +7,6 @@
 <div class="row">
   <div class="column small-12 large-6">
     <img src="<%=@release.album_art_url%>" height="400" width="400"/>
-    <% if current_user == @release.user %>
-    <div class="row">
-      <%= link_to "Edit", edit_release_path(@release) %>
-    </div>
-    <% end %>
   </div>
   <div class="column small-12 large-6">
     <% unless @release.performer.empty? %>

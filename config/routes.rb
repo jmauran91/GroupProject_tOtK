@@ -4,11 +4,12 @@ Rails.application.routes.draw do
     resources :reviews, only: [:create, :new, :destroy, :edit, :update]
   end
 
-  resources :reviews do
-    resources :comments
+  resources :reviews, only: [:create, :new, :destroy, :edit, :update] do
+    resources :comments, only: [:new, :create, :edit, :update]
   end
   resources :users, only: [:show]
   resources :genres, only: [:show]
+  resources :comments, only: [:show, :update, :destroy]
 
 
   root "releases#index"
