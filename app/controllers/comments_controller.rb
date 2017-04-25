@@ -5,6 +5,8 @@ class CommentsController < ApplicationController
 
   def new
     @review = Review.find(params[:review_id])
+    @release = @review.release
+    @release_genres = @release.genres
     @comment = Comment.new
   end
 
