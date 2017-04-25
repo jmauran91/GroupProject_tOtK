@@ -18,12 +18,6 @@
       Review Body: <%=review.body%>
       <br />
       <div id="app">
-        <!-- <%= form_for [@release, @review], url: release_review_path(@release, review), method: :patch,
-          html: { class: "review-vote" } do |f| %>
-            <%= f.submit "Upvote"%> <br />
-            Votes: <%= review.votes %>
-            <%= f.submit "Downvote"%> <br />
-            <%end%> -->
       </div>
     </div>
       <% @comments.each do |comment| %>
