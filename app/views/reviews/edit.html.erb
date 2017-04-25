@@ -1,0 +1,9 @@
+<div class="field">
+  <%= f.label :rating %><br />
+  <%= f.text_field :rating, :input_html => { :value => @review.rating } %>
+</div>
+
+<div class="field">
+  <%= f.label :body %><br />
+  <%= f.text_field :body, :input_html => { :value => @review.body } %>
+</div>

@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
   resources :releases, only: [:index, :show, :create, :new, :edit, :update, :destroy] do
-    resources :reviews, only: [:show, :create, :new, :destroy, :patch, :update]
+    resources :reviews, only: [:create, :new, :destroy, :edit, :update]
   end
 
   resources :reviews do

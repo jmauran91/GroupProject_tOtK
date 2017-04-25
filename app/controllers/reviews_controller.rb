@@ -6,6 +6,7 @@ class ReviewsController < ApplicationController
 
   def new
     @release = Release.find(params[:release_id])
+    @release_genres = @release.genres
     @review = Review.new
   end
 
@@ -26,6 +27,10 @@ class ReviewsController < ApplicationController
       flash[:notice] = "You must be logged in to do that"
       redirect_to new_user_session_path
     end
+  end
+
+  def edit
+    @review = Review.find(params[:id])
   end
 
   def update

@@ -48,32 +48,44 @@
     <%= link_to 'Add a Review', new_release_review_path(@release) %>
   </p>
   <% @reviews.each do |review| %>
-  <ul>
-    <li>
-      Rating: <%=review.rating%>
-      <br />
-      Author: <%= review.user.username %>
-      <br />
-      Review: <%=review.body%>
-      <br />
-      <%= form_for [@release, @review], url: release_review_path(@release, review), method: :patch,
-        html: { class: "review-vote" } do |f| %>
-          <%= f.submit "Upvote"%> <br />
-          Votes: <%= review.votes %>
-          <%= f.submit "Downvote"%> <br />
-          <%end%>
-      <% review.comments.each do |comment| %>
-      <ul>
-        <li>
-           Comment: <%= comment.body %>
-           <br />
-           Written by: <%= comment.user.username %>
-         </li>
-         <br />
-      </ul>
-      <% end %>
+  <div class="review">
+    <ul class="no-bullet">
+      <li>
+        Rating: <%=review.rating%>
+        <br />
+        Author: <%= review.user.username %>
+        <br />
+        Review: <%=review.body%>
+        <br />
+        <% if review.user == current_user %>
+            <%= link_to "Edit/Delete this post" %>
+        <% end %>
+        <br />
+        <%= form_for [@release, @review], url: release_review_path(@release, review), method: :patch,
+          html: { class: "review-vote" } do |f| %>
+            <%= f.submit "Upvote"%> <br />
+            Votes: <%= review.votes %>
+            <%= f.submit "Downvote"%> <br />
+            <%end%>
+          <br />
+        <% review.comments.each do |comment| %>
+        <ul>
+          <div class="large-6 large-offset-1 columns">
+            <li>
+               Comment: <%= comment.body %>
+               <br />
+               Written by: <%= comment.user.username %>
+             </li>
+             <br />
+          </div>
+        </ul>
+        <% end %>
+      </li>
+    </ul>
+    <div class="row">
+
+    </div>
       <%= link_to 'Add Comment', new_review_comment_path(review) %>
-    </li>
-  </ul>
+  </div>
   <% end %>
 </div>
