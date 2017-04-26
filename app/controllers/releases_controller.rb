@@ -1,4 +1,5 @@
 class ReleasesController < ApplicationController
+
   def index
     @releases = Release.all
   end
@@ -52,14 +53,7 @@ class ReleasesController < ApplicationController
 
   def destroy
       release = Release.find(params[:id])
-      reviews = release.reviews
-      reviews.each do |review|
-        review.comments.each do |comment|
-          comment.destroy
-        end
-        review.destroy
-      end
-      release.destroy
+      destroy_release(release)
       flash[:notice] = "Release successfully deleted"
       redirect_to root_path
   end

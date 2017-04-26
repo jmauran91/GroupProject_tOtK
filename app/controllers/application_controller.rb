@@ -3,6 +3,8 @@ class ApplicationController < ActionController::Base
 
   before_filter :configure_permitted_parameters, if: :devise_controller?
 
+  helper_method :authorize_user
+  helper_method :destroy_release
 
  protected
 
@@ -11,4 +13,20 @@ class ApplicationController < ActionController::Base
    devise_parameter_sanitizer.permit(:account_update, keys: [:username, :avatar, :remove_avatar])
  end
 
+ def authorize_user
+    if !user_signed_in? || !current_user.is_admin?
+      raise ActionController::RoutingError.new("Not Found")
+    end
+  end
+
+  def destroy_release(release)
+    reviews = release.reviews
+    reviews.each do |review|
+      review.comments.each do |comment|
+        comment.destroy
+      end
+      review.destroy
+    end
+    release.destroy
+  end
 end

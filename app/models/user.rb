@@ -12,6 +12,9 @@ class User < ApplicationRecord
 
   mount_uploader :avatar, AvatarUploader
 
+  def is_admin?
+      self.role == "admin"
+  end
 
   has_many :releases
   has_many :reviews
