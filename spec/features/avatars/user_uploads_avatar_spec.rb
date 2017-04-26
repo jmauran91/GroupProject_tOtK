@@ -2,7 +2,12 @@ require 'rails_helper'
 
 feature 'user can upload an avatar to their profile' do
 
-  let!(:user) { FactoryGirl.create(:user, email: 'email1@gmail.com', password: 'password1') }
+  let!(:user) { FactoryGirl.create(
+    :user,
+    email: 'email1@gmail.com',
+    password: 'password1'
+    )
+  }
   before :each do
 
     visit root_path
