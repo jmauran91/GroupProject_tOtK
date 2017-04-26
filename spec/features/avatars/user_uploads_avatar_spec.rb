@@ -14,7 +14,8 @@ feature 'user can upload an avatar to their profile' do
     click_link "My Profile"
     click_link "Edit my profile"
 
-    attach_file :user_avatar, "#{Rails.root}/spec/support/images/bass_guitar_hero_by_karate_chop.jpg"
+    attach_file :user_avatar,
+      "#{Rails.root}/spec/support/images/bass_guitar_hero_by_karate_chop.jpg"
     fill_in "Current password", with: 'password'
 
     click_button "Update"
