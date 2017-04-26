@@ -1,6 +1,14 @@
 class ReleasesController < ApplicationController
   def index
-    @releases = Release.all
+    @releases = if params[:search]
+      Release.where('artist ILIKE ?', "%#{params[:search]}%").order('created_at DESC')
+    else
+      Release.all
+    end
+    if @releases.empty? && !Release.all.empty?
+      @releases = "Your search has found nothing"
+    end
+
   end
 
   def show
@@ -75,7 +83,8 @@ class ReleasesController < ApplicationController
       :studio,
       :no_of_tracks,
       :album_art_url,
-      :description
+      :description,
+      :search
     )
   end
 end

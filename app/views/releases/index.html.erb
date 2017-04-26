@@ -12,13 +12,17 @@
 
 <div class="row">
   <div class="column large-6">
-    <% @releases.each do |release| %>
-    <ul class="no-bullet">
-      <li> <%= link_to release.title, release_path(release) %>
-        <%= release.artist %>
-        <img src="<%=release.album_art_url%>" height='400' width='400'/>
-       </li>
-    </ul>
+    <% if @releases == "Your search has found nothing" %>
+      <p><%=@releases%></p>
+    <%else%>
+      <% @releases.each do |release| %>
+      <ul class="no-bullet">
+        <li> <%= link_to release.title, release_path(release) %>
+          <%= release.artist %>
+          <img src="<%=release.album_art_url%>" height='400' width='400'/>
+        </li>
+      </ul>
+      <%end%>
     <% end %>
   </div>
 </div>
