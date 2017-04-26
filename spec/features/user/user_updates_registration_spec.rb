@@ -13,13 +13,13 @@ feature "user updates registration" do
   # If enter valid changes I will receive notification that the changes have
   # been made
   # I should be able to sign in only with the updated information
-    let!(:user) { FactoryGirl.create(:user) }
+    let!(:user) { FactoryGirl.create(:user, email: 'email1@gmail.com', password: 'password1') }
     before :each do
       visit root_path
 
       click_link "Sign In"
-      fill_in "Email", with: 'email@gmail.com'
-      fill_in "Password", with: 'password'
+      fill_in "Email", with: 'email1@gmail.com'
+      fill_in "Password", with: 'password1'
       click_button "Log in"
     end
 
@@ -29,7 +29,7 @@ feature "user updates registration" do
       click_link "Edit my profile"
 
       fill_in 'Email', with: 'mynewemail@gmail.com'
-      fill_in 'Current password', with: 'password'
+      fill_in 'Current password', with: 'password1'
       click_button 'Update'
       expect(page).to have_content "Your account has been updated successfully."
 
@@ -37,7 +37,7 @@ feature "user updates registration" do
       click_link "Sign In"
 
       fill_in "Email", with: 'mynewemail@gmail.com'
-      fill_in "Password", with: 'password'
+      fill_in "Password", with: 'password1'
       click_button "Log in"
 
       expect(page).to have_content 'Sign Out'
@@ -49,15 +49,15 @@ feature "user updates registration" do
       click_link "Edit"
 
       fill_in 'Email', with: 'mynewemail@gmail.com'
-      fill_in 'Current password', with: 'password'
+      fill_in 'Current password', with: 'password1'
       click_button 'Update'
       expect(page).to have_content "Your account has been updated successfully."
 
       click_link "Sign Out"
       click_link "Sign In"
 
-      fill_in "Email", with: 'email@gmail.com'
-      fill_in "Password", with: 'password'
+      fill_in "Email", with: 'email1@gmail.com'
+      fill_in "Password", with: 'password1'
       click_button "Log in"
 
       expect(page).to have_content 'Invalid Email or password'
@@ -69,7 +69,7 @@ feature "user updates registration" do
       click_link "Edit"
 
       fill_in 'Email', with: 'mynewemail.kgmail.com'
-      fill_in 'Current password', with: 'password'
+      fill_in 'Current password', with: 'password1'
       click_button 'Update'
       expect(page).to have_content "Email is invalid"
     end

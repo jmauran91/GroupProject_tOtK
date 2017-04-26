@@ -1,9 +1,10 @@
 require 'rails_helper'
 
 feature 'user can upload an avatar to their profile' do
-  let!(:user) { FactoryGirl.create(:user) }
 
+  let!(:user) { FactoryGirl.create(:user, email: 'email1@gmail.com', password: 'password1') }
   before :each do
+
     visit root_path
 
     click_link "Sign In"
@@ -16,7 +17,7 @@ feature 'user can upload an avatar to their profile' do
 
     attach_file :user_avatar,
       "#{Rails.root}/spec/support/images/bass_guitar_hero_by_karate_chop.jpg"
-    fill_in "Current password", with: 'password'
+    fill_in "Current password", with: 'password1'
 
     click_button "Update"
 
@@ -33,7 +34,7 @@ feature 'user can upload an avatar to their profile' do
 
     click_link "Edit my profile"
     check "Remove avatar"
-    fill_in "Current password", with: 'password'
+    fill_in "Current password", with: 'password1'
     click_button "Update"
 
     click_link "My Profile"
