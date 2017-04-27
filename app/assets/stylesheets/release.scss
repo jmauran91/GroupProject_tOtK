@@ -4,8 +4,17 @@
   z-index: 2;
 }
 
+.slider-banner {
+  background-color: $black;
+    margin-bottom: 4em;
+    opacity: 0.9
+}
+
 .slider {
   z-index: 1;
+  height: 900px;
+  width: 800px;
+
 }
 
 .release-form {
@@ -13,7 +22,7 @@
   border-radius: 10px;
   color: $black;
   padding: 2em;
-  
+
   label {
     color: $black;
   }
@@ -29,5 +38,9 @@
 #error_explanation {
   font-family: 'Open Sans', sans-serif;
   font-size: 20px;
+  text-align: center;
+}
+
+.release-tile {
   text-align: center;
 }

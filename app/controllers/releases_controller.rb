@@ -9,7 +9,7 @@ class ReleasesController < ApplicationController
     if @releases.empty? && !Release.all.empty?
       @releases = "Your search has found nothing"
     end
-
+    @releases_slider = Release.order(updated_at: :desc).limit(3)
   end
 
   def show
