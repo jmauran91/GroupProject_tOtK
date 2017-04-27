@@ -33,6 +33,7 @@ group :development, :test do
   gem 'dotenv'
   gem 'dotenv-rails'
   gem 'database_cleaner'
+  gem 'capybara-email'
 end
 
 group :development do
