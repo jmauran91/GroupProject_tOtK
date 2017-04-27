@@ -30,9 +30,8 @@ feature 'Admin can update/delete user posts and accounts' do
     end
 
   scenario 'Admin deletes comment' do
-
     expect(page).to have_content 'Admin'
-    click_link 'Symphony no. 6'
+    visit release_path(release)
 
     click_link 'Edit/Delete Comment'
 
@@ -45,7 +44,7 @@ feature 'Admin can update/delete user posts and accounts' do
 
   scenario 'Admin deletes a review' do
 
-    click_link 'Symphony no. 6'
+    visit release_path(release)
 
     click_link 'Edit/Delete this Review'
 
@@ -59,7 +58,7 @@ feature 'Admin can update/delete user posts and accounts' do
 
   scenario 'Admin deletes a release' do
 
-    click_link 'Symphony no. 6'
+    visit release_path(release)
 
     click_link 'Edit'
 
@@ -72,7 +71,6 @@ feature 'Admin can update/delete user posts and accounts' do
 
   scenario 'Admin deletes a user' do
 
-    expect(page).to have_content 'Symphony no. 6'
     click_link 'Admin'
     expect(page).to have_content 'test_user_1'
 
@@ -82,6 +80,6 @@ feature 'Admin can update/delete user posts and accounts' do
 
     visit root_path
 
-    expect(page).to_not have_content 'Symphony no. 6'
+    expect(User.find_by(username: "test_user_1")).to be nil
   end
 end

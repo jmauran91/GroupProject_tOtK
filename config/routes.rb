@@ -11,6 +11,11 @@ Rails.application.routes.draw do
   resources :genres, only: [:show]
   #resources :comments, only: [:show, :update, :destroy]
 
+  namespace :api do
+    namespace :v1 do
+      resources :releases
+    end
+  end
 
   root "releases#index"
 end

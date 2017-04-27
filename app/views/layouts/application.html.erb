@@ -7,7 +7,6 @@
     <title><%= content_for?(:title) ? yield(:title) : "Kensai Music DB" %></title>
 
     <%= stylesheet_link_tag    "application" %>
-    <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
     <style>
       @import url('https://fonts.googleapis.com/css?family=Michroma|Open+Sans');
     </style>
@@ -31,7 +30,7 @@
       <li><%= link_to "Add a Release", new_release_path%></li>
     </ul>
   </div>
-  
+
   <div class="top-bar-right">
     <ul class="menu">
         <% if user_signed_in? %>
@@ -66,5 +65,10 @@
 
     <%= yield %>
 
+    <div id="app">
+    </div>
+
+
+    <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
   </body>
 </html>
