@@ -36,6 +36,7 @@ class ReleaseIndexContainer extends React.Component {
       return(
         <Release
         key={release.id}
+        id={release.id}
         title={release.title}
         artist={release.artist}
         performer={release.performer}
