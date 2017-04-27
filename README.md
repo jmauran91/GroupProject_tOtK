@@ -13,6 +13,9 @@ review of your favorite Winger release? Users can also leave a comment on any
 particular review. Lastly, it allows a user to sort all the releases by genre
 or search through the releases with the search bar.
 ```
+## Check our App out on Heroku
+
+* [Kensai Music DB](https://group-project-totk.herokuapp.com/)
 
 #### Screenshot of the App
 
