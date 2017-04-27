@@ -4,6 +4,5 @@ $(document).ready(function(){
     height: 400,
     interval: 4000
   });
-  slider.addCaptions();
   slider.start();
 });

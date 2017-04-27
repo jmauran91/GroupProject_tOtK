@@ -1,14 +1,17 @@
 <div class="row">
   <h1 class="small-centered"> Welcome to the Kensai Music DB </h1>
 </div>
-<div class="slider-banner">
-  <div class="slider small-centered">
-  <% @releases_slider.each do |release| %>
-      <%= link_to image_tag(release.album_art_url), release_path(release) %>
-    <% end %>
-  </div>
-</div>
 
+  <div class="slider-banner">
+    <h6>Checkout the latest Releases</h6>
+    <div class="slider small-centered">
+      <% @releases_slider.each do |release| %>
+        <a href="<%= release_path(release) %>">
+          <img src="<%=release.album_art_url%>" alt="<%= release.title %> by <%= release.artist %>" />
+        </a>
+      <% end %>
+    </div>
+  </div>
 
 
     <% if @releases == "Your search has found nothing" %>
