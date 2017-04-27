@@ -19,17 +19,6 @@ class ReleaseIndexContainer extends React.Component {
       })
   }
 
-  addNewRelease(releasePayload){
-    fetch(`api/v1/releases`, {
-      method: 'POST',
-      body: JSON.stringify(releasePayload)
-    })
-      .then(response => response.json())
-      .then(response => {
-        this.setState({ releases: [...this.state.releases, response] })
-      })
-
-  }
 
   render(){
     let renderReleases = this.state.releases.map(release => {
@@ -50,7 +39,6 @@ class ReleaseIndexContainer extends React.Component {
     })
     return(
       <div>
-      <ReleaseFormContainer addNewRelease={this.addNewRelease} nextId={this.state.releases.length} />
       <div className="row small-up-1 medium-up-2 large-up-3">
         {renderReleases}
       </div>

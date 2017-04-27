@@ -18,7 +18,8 @@ class VoteContainer extends React.Component {
   }
 
   componentDidMount() {
-  fetch(`/api/v1/reviews`)
+  let releaseId = this.props.params.id;
+  fetch(`/api/v1/releases/${releaseId}`)
     .then(response => response.json())
     .then(responseData => {
       this.setState({ reviews: responseData })

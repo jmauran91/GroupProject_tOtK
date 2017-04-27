@@ -16,8 +16,6 @@
       <h4>Performed By: <%= @release.performer %></h4>
     <% end %>
 
-      <div id="app">
-      </div>
     <h4>Year: <%= @release.year %></h4>
 
     <% unless @release.studio.empty? %>
@@ -64,6 +62,8 @@
         <% end %>
         <br />
           <br />
+          <div id="app">
+          </div>
         <% review.comments.each do |comment| %>
         <ul>
           <div class="large-6 large-offset-1 columns">
