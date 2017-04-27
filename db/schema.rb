@@ -31,6 +31,17 @@ ActiveRecord::Schema.define(version: 20170426014547) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "points", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "review_id"
+    t.boolean  "upvote",     default: false
+    t.boolean  "downvote",   default: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.index ["review_id"], name: "index_points_on_review_id", using: :btree
+    t.index ["user_id"], name: "index_points_on_user_id", using: :btree
+  end
+
   create_table "release_genres", force: :cascade do |t|
     t.integer  "release_id"
     t.integer  "genre_id"
@@ -57,7 +68,7 @@ ActiveRecord::Schema.define(version: 20170426014547) do
 
   create_table "reviews", force: :cascade do |t|
     t.string   "body",                   null: false
-    t.integer  "rating",                 null: false
+    t.float    "rating",                 null: false
     t.integer  "votes",      default: 0
     t.integer  "user_id"
     t.integer  "release_id"
