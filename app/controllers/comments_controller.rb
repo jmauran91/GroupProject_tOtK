@@ -18,8 +18,13 @@ class CommentsController < ApplicationController
       @comment = Comment.new(comment_params)
       @comment.user = current_user
       @comment.review = @review
-      @comment.save
-      redirect_to release_path(@release)
+      if @comment.save
+        flash[:notice] = "Your comment has been posted."
+        redirect_to release_path(@release)
+      else
+        @release_genres = @release.genres
+        render :new
+      end
     else
       flash[:notice] = "You must be logged in to do that"
       redirect_to new_user_session_path
@@ -40,6 +45,7 @@ class CommentsController < ApplicationController
       flash[:notice] = "Comment successfully updated"
       redirect_to release_path(release)
     else
+      @release = release
       @release_genres = release.genres
       render :edit
     end

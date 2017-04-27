@@ -22,8 +22,8 @@ class ReviewsController < ApplicationController
         flash[:notice] = "Review was added successfully."
         redirect_to release_path(@release)
       else
-        flash[:notice] = "Review was not saved."
-        redirect_to release_path(@release)
+        @release_genres = @release.genres
+        render :new
       end
     else
       flash[:notice] = "You must be logged in to do that"

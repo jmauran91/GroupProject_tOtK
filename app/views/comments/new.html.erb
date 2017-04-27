@@ -1,4 +1,8 @@
-<h1> New Comment Form </h1>
+<div class="row">
+  <div class="release-header">
+    <h1 class="small-12 large-8 small-centered"> Add a Comment </h1>
+  </div>
+</div>
 <div class="row small-centered">
    <h1> <%=@release.title %> by <%= @release.artist %> </h1>
 </div>
@@ -48,6 +52,21 @@
     </ul>
   </div>
 </div>
+
+<div class="row">
+  <% if @comment.errors.any? %>
+    <div id="error_explanation" class="callout warning">
+      <h5><%= pluralize(@comment.errors.count, "error") %> prohibited this comment from being saved:</h5>
+
+      <ul class="no-bullet">
+      <% @comment.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+</div>
+
 
 <div class="row">
   <div class="release-form">
