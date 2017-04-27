@@ -1,5 +1,4 @@
 <div>
-<div>
 <h1> <%=@release.title %> by <%= @release.artist %> </h1>
 <img src="http://cps-static.rovicorp.com/3/JPG_500/MI0003/125/MI0003125784.jpg?partner=allrovi.com" height="400" width="400"/>
 </div>
@@ -7,33 +6,29 @@
 <h3> Description: </h3>
 
 <div class="">
-  <% @reviews.each do |review| %>
-  <ul>
+  <!-- <ul>
+    <% @reviews.each do |review| %>
     <li>
       Review Rating: <%=review.rating%>
       <br />
       Review Author: <%= review.user.username %>
       <br />
-      <div class="row large-12">
       Review Body: <%=review.body%>
-      <br />
+      <br /> -->
       <div id="app">
       </div>
-    </div>
-      <% @comments.each do |comment| %>
+      <!-- <% @comments.each do |comment| %>
       <ul>
         <li>
            Comment: <%= comment.body %>
-           <br />
            Written by: <%= comment.user.username %>
          </li>
-         <br />
       </ul>
       <% end %>
       <%= link_to 'Add Comment', new_review_comment_path(review) %>
     </li>
-  </ul>
-  <% end %>
+    <% end %>
+  </ul> -->
 </div>
 
 
