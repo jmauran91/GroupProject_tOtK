@@ -10,6 +10,15 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  mount_uploader :avatar, AvatarUploader
+
+  def is_admin?
+      self.role == "admin"
+  end
+
   has_many :releases
+  has_many :reviews
   has_many :comments
+  has_many :points
+  has_many :reviews, through: :points
 end

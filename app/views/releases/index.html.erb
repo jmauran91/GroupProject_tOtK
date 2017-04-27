@@ -1,24 +1,3 @@
 <div class="row">
   <h1 class="small-centered"> Welcome to the Kensai Music DB </h1>
 </div>
-
-
-<div class="slider">
-  <img class="slider-img" src="">
-  <img class="slider-img" data-src="">
-  <img class="slider-img" data-src="">
-</div>
-
-
-<div class="row">
-  <div class="column large-6">
-    <% @releases.each do |release| %>
-    <ul class="no-bullet">
-      <li> <%= link_to release.title, release_path(release) %>
-        <%= release.artist %>
-        <img src="<%=release.album_art_url%>" height='400' width='400'/>
-       </li>
-    </ul>
-    <% end %>
-  </div>
-</div>

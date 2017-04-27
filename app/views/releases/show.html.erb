@@ -5,29 +5,36 @@
 <div class="row">
   <div class="column small-12 large-6">
     <img src="<%=@release.album_art_url%>" height="400" width="400"/>
+    <% if current_user == @release.user || current_user.try(:is_admin?)%>
+    <div class="row">
+      <%= link_to "Edit", edit_release_path(@release) %>
+    </div>
+    <% end %>
   </div>
   <div class="column small-12 large-6">
     <% unless @release.performer.empty? %>
-      <h3>Performed By: <%= @release.performer %></h3>
+      <h4>Performed By: <%= @release.performer %></h4>
     <% end %>
 
-    <h3>Year: <%= @release.year %></h3>
+      <div id="app">
+      </div>
+    <h4>Year: <%= @release.year %></h4>
 
     <% unless @release.studio.empty? %>
-      <h3>Studio: <%= @release.studio %></h3>
+      <h4>Studio: <%= @release.studio %></h4>
     <% end %>
 
-    <h3>No. of Tracks: <%= @release.no_of_tracks %></h3>
+    <h4>No. of Tracks: <%= @release.no_of_tracks %></h4>
 
     <% unless @release_genres.empty? %>
-      <h3>Genre(s): </h3>
+      <h4>Genre(s): </h4>
       <% @release_genres.each do |genre| %>
-        <%= link_to genre.name, genre_path(genre) %> |
+        | <%= link_to genre.name, genre_path(genre) %> |
       <% end %>
     <% end %>
 
     <% unless @release.description.empty? %>
-    <h3> Description: </h3>
+    <h4> Description: </h4>
     <p><%= @release.description %></p>
     <% end %>
 
@@ -43,32 +50,41 @@
     <%= link_to 'Add a Review', new_release_review_path(@release) %>
   </p>
   <% @reviews.each do |review| %>
-  <ul>
-    <li>
-      Review Rating: <%=review.rating%>
-      <br />
-      Review Author: <%= review.user.username %>
-      <br />
-      Review Body: <%=review.body%>
-      <br />
-      <%= form_for [@release, @review], url: release_review_path(@release, review), method: :patch,
-        html: { class: "review-vote" } do |f| %>
-          <%= f.submit "Upvote"%> <br />
-          Votes: <%= review.votes %>
-          <%= f.submit "Downvote"%> <br />
-          <%end%>
-      <% @comments.each do |comment| %>
-      <ul>
-        <li>
-           Comment: <%= comment.body %>
-           <br />
-           Written by: <%= comment.user.username %>
-         </li>
-         <br />
-      </ul>
-      <% end %>
+  <div class="review">
+    <ul class="no-bullet">
+      <li>
+        Rating: <%=review.rating%>
+        <br />
+        Author: <%= review.user.username %>
+        <br />
+        Review: <%=review.body%>
+        <br />
+        <% if current_user == review.user || current_user.try(:is_admin?)%>
+            <%= link_to "Edit/Delete this Review", edit_release_review_path(@release, review) %>
+        <% end %>
+        <br />
+          <br />
+        <% review.comments.each do |comment| %>
+        <ul>
+          <div class="large-6 large-offset-1 columns">
+            <li>
+               Comment: <%= comment.body %>
+               <br />
+               Written by: <%= comment.user.username %>
+               <% if current_user == comment.user || current_user.try(:is_admin?)%>
+               <p><%= link_to "Edit/Delete Comment", edit_review_comment_path(review, comment) %></p>
+               <% end %>
+             </li>
+             <br />
+          </div>
+        </ul>
+        <% end %>
+      </li>
+    </ul>
+    <div class="row">
+
+    </div>
       <%= link_to 'Add Comment', new_review_comment_path(review) %>
-    </li>
-  </ul>
+  </div>
   <% end %>
 </div>

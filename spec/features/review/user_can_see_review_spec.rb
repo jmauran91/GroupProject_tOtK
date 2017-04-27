@@ -25,7 +25,7 @@ feature "user can see reviews" do
       release: new_release
     )
     visit release_path(new_release)
-    expect(page).to have_content "Review Body"
+    expect(page).to have_content "Review:"
     expect(page).to have_content new_review.body
 
   end

@@ -17,18 +17,23 @@ gem 'coffee-rails', '~> 4.2'
 gem 'jquery-rails'
 gem 'jbuilder', '~> 2.5'
 gem 'devise'
+gem 'carrierwave'
+gem 'fog-aws'
+gem 'mini_magick'
 
 group :development, :test do
   gem 'pry-rails'
   gem 'rspec-rails'
   gem 'capybara'
-  gem 'launchy'
   gem 'factory_girl'
   gem 'valid_attribute'
   gem 'shoulda-matchers', require: false
   gem 'byebug', platform: :mri
   gem 'coveralls', require: false
   gem 'dotenv'
+  gem 'dotenv-rails'
+  gem 'database_cleaner'
+  gem 'capybara-email'
 end
 
 group :development do
