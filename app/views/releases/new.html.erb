@@ -48,9 +48,16 @@
           <%= f.text_field :album_art_url %>
         </div>
 
-        <div class="field">
-          <%= f.collection_check_boxes :genre_ids, @genre_collection, :id, :name %>
+        <div class="field check-boxes">
+          <% @genre_collection.map do |genre| %>
+          <div class="check-box-and-label">
+            <input type="checkbox" value="<%= genre.id %>" name="release[genre_ids][]" id="release_genre_ids_<%= genre.id %>">
+            <label for="release_genre_ids_<%= genre.id %>"><%= genre.name %></label>
+          </div>
+          <% end %>
         </div>
+        <br>
+        <br>
 
         <div class="field">
           <%= f.label :description %> <br />

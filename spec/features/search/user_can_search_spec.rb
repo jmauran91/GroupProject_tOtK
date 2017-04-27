@@ -33,7 +33,6 @@ feature "user can search artists" do
 
     visit root_path
     fill_in "search", with: 'faun'
-    save_and_open_page
     click_button 'Search'
 
     expect(page).to have_content 'Fauntleroy'

@@ -2,27 +2,29 @@
   <h1 class="small-centered"> Welcome to the Kensai Music DB </h1>
 </div>
 
+  <div class="slider-banner">
+    <h6>Checkout the latest Releases</h6>
+    <div class="slider small-centered">
+      <% @releases_slider.each do |release| %>
+        <a href="<%= release_path(release) %>">
+          <img src="<%=release.album_art_url%>" alt="<%= release.title %> by <%= release.artist %>" />
+        </a>
+      <% end %>
+    </div>
+  </div>
 
-<div class="slider">
-  <img class="slider-img" src="">
-  <img class="slider-img" data-src="">
-  <img class="slider-img" data-src="">
-</div>
 
-
-<div class="row">
-  <div class="column large-6">
     <% if @releases == "Your search has found nothing" %>
-      <p><%=@releases%></p>
+      <div class="row">
+        <h1 class="small-centered"><%=@releases%></h1>
+      </div>
     <%else%>
-      <% @releases.each do |release| %>
-      <ul class="no-bullet">
-        <li> <%= link_to release.title, release_path(release) %>
-          <%= release.artist %>
-          <img src="<%=release.album_art_url%>" height='400' width='400'/>
-        </li>
-      </ul>
-      <%end%>
+    <div class="row small-up-1 medium-up-2 large-up-3">
+        <% @releases.each do |release| %>
+      <div class="column column-block release-tile">
+        <%= link_to image_tag(release.album_art_url), release_path(release) %>
+          <%= link_to release.title, release_path(release) %> - <%= release.artist %>
+      </div>
+      <% end %>
     <% end %>
   </div>
-</div>

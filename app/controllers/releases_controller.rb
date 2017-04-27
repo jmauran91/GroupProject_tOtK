@@ -1,15 +1,16 @@
 class ReleasesController < ApplicationController
 
   def index
-    @releases = if params[:search]
-      Release.where('artist ILIKE ?', "%#{params[:search]}%").order('created_at DESC')
+    if params[:search]
+      @releases = Release.where('artist ILIKE ?', "%#{params[:search]}%").order('created_at DESC')
+      if @releases.empty? && !Release.all.empty?
+        @releases = "Your search has found nothing"
+      end
+      render 'application/search'
     else
-      Release.all
+      @releases_slider = Release.order(updated_at: :desc).limit(3)
+      @releases = Release.all
     end
-    if @releases.empty? && !Release.all.empty?
-      @releases = "Your search has found nothing"
-    end
-
   end
 
   def show
