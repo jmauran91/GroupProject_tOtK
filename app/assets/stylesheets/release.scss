@@ -37,7 +37,7 @@
 }
 
 #error_explanation {
-  font-family: 'Open Sans', sans-serif;
+  font-family: $secondary-font-family;
   font-size: 20px;
   text-align: center;
 }
@@ -48,4 +48,12 @@
 
 .heading {
   margin-bottom: 2em;
+}
+
+.check-boxes {
+  font-family: $secondary-font-family;
+}
+
+.check-box-and-label {
+  display: inline-block;
 }
