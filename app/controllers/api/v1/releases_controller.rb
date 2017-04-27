@@ -5,6 +5,9 @@ class Api::V1::ReleasesController < ApplicationController
     render json: Release.all
   end
 
+  def show
+    render json: Release.find(params[:id])
+  end
   # def show
   #   thing = Thing.find(params[:id])
   #   render json: thing

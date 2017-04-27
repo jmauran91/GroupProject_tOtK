@@ -19,4 +19,6 @@ class User < ApplicationRecord
   has_many :releases
   has_many :reviews
   has_many :comments
+  has_many :points
+  has_many :reviews, through: :points
 end
