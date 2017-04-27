@@ -1,11 +1,39 @@
 @import "settings";
 
+.genres {
+  z-index: 2;
+}
+
+.slider-banner {
+  background-color: $black;
+  margin-bottom: 4em;
+  opacity: 0.9;
+  text-align: center;
+}
+
+.slider {
+  z-index: 1;
+  height: 900px;
+  width: 500px;
+
+}
+
 .release-form {
   background-color: $white;
   border-radius: 10px;
   color: $black;
   padding: 2em;
+  margin-top: 2em;
 
+  label {
+    color: $black;
+  }
+}
+
+.release-label {
+  a, p {
+    display: inline-block;
+  }
 }
 
 .release-header {
@@ -16,7 +44,23 @@
 }
 
 #error_explanation {
-  font-family: 'Open Sans', sans-serif;
+  font-family: $secondary-font-family;
   font-size: 20px;
   text-align: center;
+}
+
+.release-tile {
+  text-align: center;
+}
+
+.heading {
+  margin-bottom: 2em;
+}
+
+.check-boxes {
+  font-family: $secondary-font-family;
+}
+
+.check-box-and-label {
+  display: inline-block;
 }

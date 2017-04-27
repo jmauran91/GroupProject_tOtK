@@ -51,6 +51,8 @@ class ReleaseIndexContainer extends React.Component {
       <div>
       {renderReleases}
       <ReleaseFormContainer addNewRelease={this.addNewRelease} nextId={this.state.releases.length} />
+      <div className="row small-up-1 medium-up-2 large-up-3">
+
       </div>
     )
   }

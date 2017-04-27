@@ -1,3 +1,6 @@
 <h1> Profile Page </h1>
+
+<%= image_tag(@user.avatar_url) if @user.avatar? %>
+
 <%= link_to "Edit my profile", edit_user_registration_path %>
 <p> This is you: <%= @user.username %> </p>

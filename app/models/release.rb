@@ -7,4 +7,6 @@ class Release < ApplicationRecord
 
   belongs_to :user
   has_many :reviews
+  has_many :release_genres
+  has_many :genres, through: :release_genres
 end

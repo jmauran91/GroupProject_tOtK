@@ -1,0 +1,22 @@
+<% if @releases == "Your search has found nothing" %>
+  <div class="row">
+    <h1 class="small-centered"><%=@releases%></h1>
+  </div>
+<%else%>
+  <div class="row">
+
+    <h1 class="small-centered">Search Results for <%= params[:search] %></h1>
+  </div>
+  <div class="row small-up-1 medium-up-2 large-up-3">
+      <% @releases.each do |release| %>
+    <div class="column column-block release-tile">
+      <%= link_to image_tag(release.album_art_url), release_path(release) %>
+      <%= link_to release.title, release_path(release) %> - <%= release.artist %>
+    </div>
+    <% end %>
+  <% end %>
+  </div>
+
+  <div id="app">
+
+  </div>

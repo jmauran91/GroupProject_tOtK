@@ -1,0 +1,16 @@
+<div class="row heading">
+  <h1><%= @genre.name %></h1>
+</div>
+
+<% unless @releases.empty? %>
+<div class="row small-up-1 medium-up-2 large-up-3">
+    <% @releases.each do |release| %>
+  <div class="column column-block release-tile">
+    <%= link_to image_tag(release.album_art_url), release_path(release) %>
+      <%= link_to release.title, release_path(release) %> - <%= release.artist %>
+  </div>
+  <% end %>
+<% else %>
+  <h2>There are no releases for this genre yet</h2>
+  <%= link_to "Be the first to add one", new_release_path %>
+<% end %>

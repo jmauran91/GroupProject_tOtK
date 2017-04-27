@@ -20,10 +20,13 @@
 #Ignore coverage
 /coverage
 
+# Ignore uploaded files in test/development
+/public/uploads
 
+# Ignore environment variables
 .env
 
-#Ignore React Stuff
+#Ingore JS files
 /node_modules
 /app/assets/javascripts/bundle.js
 /react/coverage

@@ -1,0 +1,121 @@
+/*
+ * Ideal Image Slider Default Theme
+ * Version: 1.2.0
+ */
+
+.ideal-image-slider {
+	background-color: #fff;
+	background-repeat: no-repeat;
+	background-position: 50% 50%;
+	background-size: 32px 32px;
+}
+
+/* Navigation */
+.iis-previous-nav,
+.iis-next-nav {
+	position: absolute;
+	top: 50%;
+	z-index: 20;
+	display: block;
+	width: 60px;
+	height: 60px;
+	text-indent: -9999px;
+	background-repeat: no-repeat;
+	background-color: rgba(0,0,0,0.5);
+	border-radius: 50px;
+	background-size: 48px 48px;
+	cursor: pointer;
+	opacity: 0;
+	-webkit-transform: translateY(-50%);
+		-ms-transform: translateY(-50%);
+			transform: translateY(-50%);
+	-webkit-transition: 0.3s ease-out;
+	   -moz-transition: 0.3s ease-out;
+		 -o-transition: 0.3s ease-out;
+			transition: 0.3s ease-out;
+}
+.iis-previous-nav {
+	left: 5%;
+	background-position: 35% 50%;
+	background-color: #fff;
+}
+.iis-next-nav {
+	right: 5%;
+	background-position: 65% 50%;
+	background-color: #fff;
+}
+.ideal-image-slider:hover .iis-previous-nav,
+.ideal-image-slider:hover .iis-next-nav { opacity: 0.5; }
+.ideal-image-slider:hover .iis-previous-nav:hover,
+.ideal-image-slider:hover .iis-next-nav:hover { opacity: 1.0; }
+
+/* Bullet Navigation */
+.iis-bullet-nav {
+	position: absolute;
+	bottom: 5%;
+	right: 5%;
+	z-index: 15;
+	width: 90%;
+	text-align: right;
+	opacity: 0.4;
+	-webkit-transition: 0.3s ease-out;
+	   -moz-transition: 0.3s ease-out;
+		 -o-transition: 0.3s ease-out;
+			transition: 0.3s ease-out;
+}
+.iis-has-captions .iis-bullet-nav { max-width: 42%; }
+.iis-bullet-nav a {
+	display: inline-block;
+	width: 10px;
+	height: 10px;
+	background: transparent;
+	text-indent: 9999px;
+	margin: 0 5px;
+	border: 3px solid rgba(0,0,0,0.5);
+	border-radius: 10px;
+	cursor: pointer;
+	-webkit-transition: 0.3s ease-out;
+	   -moz-transition: 0.3s ease-out;
+		 -o-transition: 0.3s ease-out;
+			transition: 0.3s ease-out;
+}
+.iis-bullet-nav a.iis-bullet-active,
+.iis-bullet-nav a:hover { background: #fff; }
+.ideal-image-slider:hover .iis-bullet-nav { opacity: 0.7; }
+.ideal-image-slider:hover .iis-bullet-nav:hover { opacity: 1.0; }
+
+/* Captions */
+.iis-has-captions .iis-slide { text-indent: 0; }
+.iis-caption {
+	position: absolute;
+	left: 5%;
+	bottom: 5%;
+	max-width: 90%;
+	z-index: 10;
+	background: #000;
+	background: rgba(0,0,0,0.5);
+	padding: 5px 15px;
+	border-radius: 10px;
+	font: 14px/1.6em "Helvetica Neue", Helvetica, Arial, sans-serif;
+	color: #fff;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+.iis-has-bullet-nav .iis-caption { max-width: 42%; }
+.iis-caption .iis-caption-title { font-weight: bold; }
+.iis-caption .iis-caption-content {
+	font-size: 13px;
+	line-height: 1.6em;
+	color: #eee;
+}
+.iis-caption .iis-caption-content a,
+.iis-caption .iis-caption-content a:visited {
+	color: #eee;
+	text-decoration: underline;
+	border: 0;
+}
+.iis-caption .iis-caption-content a:hover,
+.iis-caption .iis-caption-content a:active {
+	color: #fff;
+}

@@ -2,13 +2,44 @@ require 'rails_helper'
 
 feature "user submits a new release" do
   scenario "user visits the new release form page and submits a release" do
-    User.create!(username: 'jbone91', email: 'johnmauran1@gmail.com', password: 'noneofyourbusiness')
+    genres = [
+      "Alternative",
+      "Blues",
+      "Classical",
+      "Country",
+      "Dance",
+      "Easy Listening",
+      "Electronic",
+      "European (Folk/Pop)",
+      "Hip Hop/Rap",
+      "Indie Pop",
+      "Inspirational/Gospel",
+      "Jazz",
+      "Latin",
+      "New Age",
+      "Opera",
+      "Pop",
+      "R&B/Soul",
+      "Reggae",
+      "Rock",
+      "World"
+    ]
+
+    genres.each do |genre|
+      Genre.create(name: genre)
+    end
+    
+    User.create!(
+      username: 'jbone91',
+      email: 'johnmauran1@gmail.com',
+      password: 'noneofyourbusiness'
+      )
     visit new_user_session_path
     fill_in 'Email', with: 'johnmauran1@gmail.com'
     fill_in 'Password', with: 'noneofyourbusiness'
     click_button 'Log in'
 
-    click_link "Add Release"
+    click_link "Add a Release"
     expect(page).to have_content "New Release Form"
 
     fill_in 'Title', with: 'Great Album'
@@ -18,10 +49,14 @@ feature "user submits a new release" do
     fill_in 'Studio', with: 'Great Studio'
     fill_in 'No of tracks', with: 9
     fill_in 'Album art url', with: 'http://tasteofcountry.com/files/2011/03/ralph-mooney.jpg'
+    page.check 'Blues'
+    page.check 'Jazz'
 
     click_button 'Add Release'
 
     expect(page).to have_content 'Great Album'
+    expect(page).to have_content 'Blues'
+    expect(page).to have_content 'Jazz'
   end
 
   scenario "user provides invalid information" do
@@ -31,9 +66,9 @@ feature "user submits a new release" do
     fill_in 'Password', with: 'noneofyourbusiness'
     click_button 'Log in'
 
-    click_link "Add Release"
-    click_button 'Add Release'
+    click_link "Add a Release"
 
+    click_button 'Add Release'
     expect(page).to have_content "Title can't be blank"
     expect(page).to have_content "Artist can't be blank"
     expect(page).to have_content "Year can't be blank"
