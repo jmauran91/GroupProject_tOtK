@@ -25,3 +25,8 @@
 
 # Ignore environment variables
 .env
+
+#Ingore JS files
+/node_modules
+/app/assets/javascripts/bundle.js
+/react/coverage

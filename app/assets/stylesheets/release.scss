@@ -30,6 +30,12 @@
   }
 }
 
+.release-label {
+  a, p {
+    display: inline-block;
+  }
+}
+
 .release-header {
   color: $white;
   font-weight: bold;
