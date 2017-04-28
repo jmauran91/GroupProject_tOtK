@@ -1,5 +1,4 @@
 import React from 'react';
-import ReleaseFormContainer from './ReleaseFormContainer';
 import Release from '../components/Release';
 
 class ReleaseIndexContainer extends React.Component {
@@ -8,7 +7,6 @@ class ReleaseIndexContainer extends React.Component {
     this.state = {
       releases: []
     }
-    this.addNewRelease = this.addNewRelease.bind(this)
   }
 
   componentDidMount(){
