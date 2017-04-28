@@ -9,7 +9,7 @@ const App = (props) => {
   return(
     <Router history={browserHistory}>
       <Route path="/" component={ReleaseIndexContainer} />
-      <Route path="/releases/:id" component={VoteContainer} />
+      <Route path="/releases/:id" component={ReleaseContainer} />
     </Router>
   )
 }

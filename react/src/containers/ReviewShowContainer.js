@@ -17,15 +17,13 @@ class ArticleShowContainer extends Component {
         this.setState({ article: responseData })
       })
   }
+  /* Handle upvote and downvote are gonna be fetch requests*/
 
   render() {
+      let comments;
     return(
-      <ArticleShow
-        id={this.state.article.id}
-        title={this.state.article.title}
-        body={this.state.article.body}
-       />
-    )
+      <VoteContainer />
+      {comments}
   }
 }
 
