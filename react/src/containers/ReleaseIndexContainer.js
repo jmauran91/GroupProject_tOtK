@@ -36,6 +36,7 @@ class ReleaseIndexContainer extends React.Component {
       return(
         <Release
         key={release.id}
+        id={release.id}
         title={release.title}
         artist={release.artist}
         performer={release.performer}
@@ -49,7 +50,6 @@ class ReleaseIndexContainer extends React.Component {
     })
     return(
       <div>
-      <ReleaseFormContainer addNewRelease={this.addNewRelease} nextId={this.state.releases.length} />
       <div className="row small-up-1 medium-up-2 large-up-3">
         {renderReleases}
       </div>
