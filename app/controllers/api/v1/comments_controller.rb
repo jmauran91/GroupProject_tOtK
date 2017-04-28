@@ -1,7 +1,9 @@
 class Api::V1::CommentsController < ApplicationController
 
   def index
-    render json: Comment.all
+    @review = Review.find(params[:review_id])
+    @comments = @review.comments
+    render json: @comments
   end
 
   def show

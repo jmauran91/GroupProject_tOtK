@@ -3,8 +3,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import UpVote from '../components/UpVote';
 import DownVote from '../components/DownVote';
-import Review from '../components/Review';
-import Comment from '../components/Comment';
+
 
 class VoteContainer extends React.Component {
   constructor(props){
@@ -13,30 +12,11 @@ class VoteContainer extends React.Component {
       reviews: [],
       comments: []
     };
-    this.handleVoteChangePositive = this.handleVoteChangePositive.bind(this)
-    this.handleVoteChangeNegative = this.handleVoteChangeNegative.bind(this)
+    this.handleUpvote = this.handleUpvote.bind(this)
+    this.handleDownvote = this.handleDownvote.bind(this)
   }
 
   componentDidMount() {
-  fetch(`/api/v1/reviews`)
-    .then(response => response.json())
-    .then(responseData => {
-      this.setState({ reviews: responseData })
-    })
-  fetch(`/api/v1/comments`)
-    .then(response => response.json())
-    .then(responseData => {
-      this.setState({ comments: responseData })
-    })
-  }
-
-  // componentDidMount() {
-  // fetch(`/api/v1/comments`)
-  //   .then(response => response.json())
-  //   .then(responseData => {
-  //     this.setState({ comments: responseData })
-  //   })
-  // }
 
   handleVoteChangePositive(reviewObj, boolpos){
     let payloadPos = {
@@ -97,58 +77,18 @@ class VoteContainer extends React.Component {
   }
 
   render() {
-    let pageRender = this.state.reviews.map(review => {
-      let functVoteChangePositive = () => {
-        this.handleVoteChangePositive(review, true)
-      }
-      let functVoteChangeNegative = () => {
-        this.handleVoteChangeNegative(review, true)
-      }
+
       return(
-        <div className="column large-6">
-          <div className="">
-          <div>
-          <Review
-           key={review.id}
-           body={review.body}
-           rating={review.rating}
-           votes={review.votes}
-           user_id={review.user_id}
-           release_id={review.release_id}
-           />
-           </div>
-          <div className="voting">
+            <div>
             <UpVote
-             className="button"
-             voteChangePositive={functVoteChangePositive}
+             handleUpvote={this.handleUpvote}
              />
             <DownVote
-             className="button"
-             voteChangeNegative={functVoteChangeNegative}
+              handleDownvote={this.handleDownvote}
              />
-             <br />
-             <br />
-           </div>
-          </div>
-        </div>
+         </div>
       )
     })
-    {/*}// let commentRender = this.state.comments.map(comment => {
-    //     <div>
-    //     <Comment
-    //     key={comment.id}
-    //     body={comment.body}
-    //     review_id={comment.review_id}
-    //     user_id={comment.user_id}
-    //     />
-    //     </div>
-    // }) */}
-    return(
-      <div>
-      {pageRender}
-      {/* {commentRender} */}
-      </div>
-    );
   }
 }
 

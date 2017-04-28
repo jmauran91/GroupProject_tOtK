@@ -13,24 +13,22 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      resources :releases
-    end
-  end
-  resources :users
-
-  namespace :api do
-    namespace :v1 do
-      resources :comments
+      resources :releases do
+        resources :reviews
+      end
     end
   end
 
   namespace :api do
     namespace :v1 do
       resources :reviews do
-        resources :points
+        resources :comments
       end
     end
   end
+  resources :users
+
+
 
 
   root "releases#index"

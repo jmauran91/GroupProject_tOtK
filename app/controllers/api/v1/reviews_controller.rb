@@ -7,7 +7,10 @@ class Api::V1::ReviewsController < ApplicationController
   end
 
   def show
-    render json: Review.find(params[:id]), include: [:points]
+    @release = Release.find(params[:release_id])
+    @reviews = @release.reviews
+    render json: @reviews, include: [:points]
+
   end
 
   def edit
@@ -51,7 +54,9 @@ class Api::V1::ReviewsController < ApplicationController
       flash[:error] = @review.errors.full_messages
     end
     @review.save
-    render json: Review.all
+    @release = Release.find(params[:release_id])
+    @reviews = @release.reviews
+    render json: @reviews, include: [:points] 
   end
 
   private
