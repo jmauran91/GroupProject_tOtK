@@ -6,3 +6,14 @@
   padding: 2em;
   background: $black;
 }
+
+#error_explanation{
+
+  h2 {
+    font-family: $secondary-font-family;
+    font-size: 1.3rem;
+  }
+  ul {
+      list-style: none;
+    }
+}
