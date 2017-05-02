@@ -1,14 +1,17 @@
 import React, {Component} from 'react';
-import ReviewTile from '../components/ReviewTile'
+import Review from '../components/Review';
+import UpVote from '../components/UpVote'
+import DownVote from '../components/DownVote'
+
 class ReviewContainer extends Component {
   constructor(props){
     super(props)
     this.state = {
-      reviews: []
+      reviews: [],
+      showme: false
     }
     this.handleVoteChangePositive = this.handleVoteChangePositive.bind(this)
     this.handleVoteChangeNegative = this.handleVoteChangeNegative.bind(this)
-
   }
 
   componentDidMount() {
@@ -20,7 +23,6 @@ class ReviewContainer extends Component {
         this.setState({ reviews: responseData })
       })
   }
-
 
   handleVoteChangePositive(reviewId, boolpos){
     let payloadPos = {
@@ -73,37 +75,46 @@ class ReviewContainer extends Component {
       .then(response => response.json())
       .then(response => {
         console.log(response)
-        this.setState({ review: response  });
+        this.setState({ reviews: response  });
       })
   }
 
 
   render(){
 
-      let reviewTiles = this.state.reviews.map(review => {
-
-      let upVoteChangeHandler = () => {
-        this.handleVoteChangePositive(review.id, true)
-      }
-      let downVoteChangeHandler = () => {
-        this.handleVoteChangeNegative(review.id, true)
-      }
-
+      let reviews = this.state.reviews.map(review => {
+              let upVoteChangeHandler = () => {
+                this.handleVoteChangePositive(review.id, true)
+              }
+              let downVoteChangeHandler = () => {
+                this.handleVoteChangeNegative(review.id, true)
+              }
         return(
-          <ReviewTile
+          <div className="review">
+            <div className="votes">
+            <UpVote
+              upVoteHandler={upVoteChangeHandler}
+              />
+            <h4 className="num-votes">{review.votes}</h4>
+            <DownVote
+              downVoteHandler={downVoteChangeHandler}
+              />
+          </div>
+          <Review
           key={review.id}
           id={review.id}
+          releaseId={this.props.params.id}
           rating={review.rating}
           body={review.body}
           votes={review.votes}
-          upVoteHandler ={this.upVoteChangeHandler}
-          downVoteHandler = {this.downVoteChangeHandler}
           />
+
+      </div>
         )
       })
     return (
       <div>
-        {reviewTiles}
+        {reviews}
       </div>
     );
 

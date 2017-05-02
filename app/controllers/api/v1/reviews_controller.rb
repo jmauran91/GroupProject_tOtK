@@ -3,14 +3,15 @@ class Api::V1::ReviewsController < ApplicationController
   skip_before_filter  :verify_authenticity_token
 
   def index
-    render json: Review.all, include: [:points]
+    @release = Release.find(params[:release_id])
+    @reviews = @release.reviews.order(id: :desc)
+    render json: @reviews
   end
 
   def show
     @release = Release.find(params[:release_id])
-    @reviews = @release.reviews
-    render json: @reviews, include: [:points]
-
+    @reviews = @release.reviews.order(id: :desc)
+    render json: @reviews
   end
 
   def edit
@@ -19,44 +20,17 @@ class Api::V1::ReviewsController < ApplicationController
 
   def update
     @review = Review.find(params[:review_id])
-    if current_user
-      if @review.points.find_by_user_id(current_user.id)
-        @point = @review.points.find_by_user_id(current_user.id)
-      else
-        @point = Point.create!(review_id: @review.id, user_id: current_user.id )
+    if user_signed_in?
+      if params[:upvote]
+        check_user_upvote(@review).save
+      elsif params[:downvote]
+        check_user_downvote(@review).save
       end
-      if @point.upvote == false && params[:upvote] == true && params[:downvote] == false
-          @point.upvote = true
-          @point.downvote = false
-      elsif @point.upvote == true && params[:upvote] == true && params[:downvote] == false
-          @point.upvote = false
-          @point.downvote = false
-      elsif @point.downvote == false && params[:downvote] == true && params[:upvote] == false
-          @point.downvote = true
-          @point.upvote = false
-      elsif @point.downvote == true && params[:downvote] == true && params[:upvote] == false
-          @point.downvote = true
-          @point.upvote = true
-      end
-      @point.save
-      if @point.upvote == true && @point.downvote == false
-        @review.votes += 1
-      elsif @point.downvote == true && @point.upvote == false
-        @review.votes -= 1
-      elsif @point.upvote == false && @point.downvote == false
-        @review.votes -= 1
-        @point.update_attributes(upvote: false, downvote: false)
-      elsif @point.downvote == true && @point.upvote == true
-        @review.votes +=1
-        @point.update_attributes(upvote: false, downvote: false)
-      end
-    else
-      flash[:error] = @review.errors.full_messages
     end
-    @review.save
-    @release = Release.find(params[:release_id])
-    @reviews = @release.reviews
-    render json: @reviews, include: [:points] 
+
+    @release = @review.release
+    @reviews = @release.reviews.order(id: :desc)
+    render json: @reviews
   end
 
   private
@@ -75,5 +49,39 @@ class Api::V1::ReviewsController < ApplicationController
     :rating,
     :votes
     )
+  end
+
+  def check_user_downvote(review)
+    if Downvote.find_by(user_id: current_user.id, review_id: review.id)
+      downvote = Downvote.where(user_id: current_user.id, review_id: review.id)
+      downvote.destroy_all
+      review.votes += 1
+    elsif Upvote.find_by(user_id: current_user.id, review_id: review.id)
+      Downvote.create!(user_id: current_user.id, review_id: review.id)
+      upvote = Upvote.where(user_id: current_user.id, review_id: review.id)
+      upvote.destroy_all
+      review.votes -= 2
+    else
+      Downvote.create!(user_id: current_user.id, review_id: review.id)
+      review.votes -= 1
+    end
+    review
+  end
+
+  def check_user_upvote(review)
+    if Upvote.find_by(user_id: current_user.id, review_id: review.id)
+      upvote = Upvote.where(user_id: current_user.id, review_id: review.id)
+      upvote.destroy_all
+      review.votes -= 1
+    elsif Downvote.find_by(user_id: current_user.id, review_id: review.id)
+      Upvote.create!(user_id: current_user.id, review_id: review.id)
+      downvote = Downvote.where(user_id: current_user.id, review_id: review.id)
+      downvote.destroy_all
+      review.votes += 2
+    else
+      Upvote.create!(user_id: current_user.id, review_id: review.id)
+      review.votes += 1
+    end
+    review
   end
 end

@@ -22,6 +22,13 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :reviews do
+      end
+    end
+  end
+
+  namespace :api do
+    namespace :v1 do
+      resources :reviews do
         resources :comments
       end
     end

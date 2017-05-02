@@ -6,8 +6,8 @@ class Review < ApplicationRecord
   belongs_to :user
   belongs_to :release
   has_many :comments
-  has_many :points
-  has_many :users, through: :points
+  has_many :upvotes
+  has_many :downvotes
 
 
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170426014547) do
+ActiveRecord::Schema.define(version: 20170429142701) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,21 +25,19 @@ ActiveRecord::Schema.define(version: 20170426014547) do
     t.index ["user_id"], name: "index_comments_on_user_id", using: :btree
   end
 
+  create_table "downvotes", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "review_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["review_id"], name: "index_downvotes_on_review_id", using: :btree
+    t.index ["user_id"], name: "index_downvotes_on_user_id", using: :btree
+  end
+
   create_table "genres", force: :cascade do |t|
     t.string   "name",       null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "points", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "review_id"
-    t.boolean  "upvote",     default: false
-    t.boolean  "downvote",   default: false
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
-    t.index ["review_id"], name: "index_points_on_review_id", using: :btree
-    t.index ["user_id"], name: "index_points_on_user_id", using: :btree
   end
 
   create_table "release_genres", force: :cascade do |t|
@@ -76,6 +74,15 @@ ActiveRecord::Schema.define(version: 20170426014547) do
     t.datetime "updated_at",             null: false
     t.index ["release_id"], name: "index_reviews_on_release_id", using: :btree
     t.index ["user_id"], name: "index_reviews_on_user_id", using: :btree
+  end
+
+  create_table "upvotes", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "review_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["review_id"], name: "index_upvotes_on_review_id", using: :btree
+    t.index ["user_id"], name: "index_upvotes_on_user_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
