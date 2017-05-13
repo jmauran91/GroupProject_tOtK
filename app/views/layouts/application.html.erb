@@ -8,6 +8,7 @@
 
     <%= stylesheet_link_tag    "application" %>
     <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
+
     <script src="https://use.fontawesome.com/d07d236a64.js"></script>
     <style>
       @import url('https://fonts.googleapis.com/css?family=Michroma|Open+Sans');
@@ -45,10 +46,12 @@
           <li><%= link_to "Sign Up", new_user_registration_path %></li>
           <li><%= link_to "Sign In", new_user_session_path %></li>
         <% end %>
-        <%= form_tag(releases_path, method: :get) do %>
-          <%= text_field_tag :search, params[:search], placeholder: "Search Artists" %>
-          <%= submit_tag 'Search', name: nil %>
-        <% end %>
+        <li>
+          <%= form_tag(releases_path, method: :get) do %>
+            <%= text_field_tag :search, params[:search], placeholder: "Search Artists" %>
+            <%= submit_tag 'Search', name: nil %>
+          <% end %>
+        </li>
     </ul>
   </div>
 </div>
@@ -69,8 +72,5 @@
 
     <div id="app">
     </div>
-
-
-    <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
   </body>
 </html>

@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
 
   helper_method :authorize_user
   helper_method :destroy_release
+  helper_method :created_or_updated?
 
  protected
 
