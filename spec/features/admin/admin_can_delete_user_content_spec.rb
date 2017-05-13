@@ -18,7 +18,6 @@ feature 'Admin can update/delete user posts and accounts' do
     }
     let!(:release) { FactoryGirl.create(:release, user_id: 1) }
     let!(:review) { FactoryGirl.create(:review, release_id: 1, user_id: 1) }
-    let!(:comment) { FactoryGirl.create(:comment, review_id: 1, user_id: 1) }
 
     before :each do
       visit root_path
@@ -29,32 +28,7 @@ feature 'Admin can update/delete user posts and accounts' do
       click_button "Log in"
     end
 
-  scenario 'Admin deletes comment' do
-    expect(page).to have_content 'Admin'
-    visit release_path(release)
 
-    click_link 'Edit/Delete Comment'
-
-    click_link 'Delete'
-
-    expect(page).to have_content 'Comment deleted'
-
-    expect(page).to_not have_content 'This review is too short'
-  end
-
-  scenario 'Admin deletes a review' do
-
-    visit release_path(release)
-
-    click_link 'Edit/Delete this Review'
-
-    click_link 'Delete'
-
-    expect(page).to have_content 'Review successfully deleted'
-
-    expect(page).to_not have_content 'I loved this'
-    expect(page).to_not have_content 'This review is too short'
-  end
 
   scenario 'Admin deletes a release' do
 

@@ -1,4 +1,4 @@
-class Point < ApplicationRecord
+class Downvote < ApplicationRecord
   belongs_to :review
   belongs_to :user
 end

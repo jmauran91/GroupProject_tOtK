@@ -1,5 +1,4 @@
 import React from 'react';
-import ReleaseFormContainer from './ReleaseFormContainer';
 import Release from '../components/Release';
 
 class ReleaseIndexContainer extends React.Component {
@@ -8,7 +7,6 @@ class ReleaseIndexContainer extends React.Component {
     this.state = {
       releases: []
     }
-    this.addNewRelease = this.addNewRelease.bind(this)
   }
 
   componentDidMount(){
@@ -19,17 +17,6 @@ class ReleaseIndexContainer extends React.Component {
       })
   }
 
-  addNewRelease(releasePayload){
-    fetch(`api/v1/releases`, {
-      method: 'POST',
-      body: JSON.stringify(releasePayload)
-    })
-      .then(response => response.json())
-      .then(response => {
-        this.setState({ releases: [...this.state.releases, response] })
-      })
-
-  }
 
   render(){
     let renderReleases = this.state.releases.map(release => {

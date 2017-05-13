@@ -16,8 +16,6 @@
       <h4>Performed By: <%= @release.performer %></h4>
     <% end %>
 
-      <div id="app">
-      </div>
     <h4>Year: <%= @release.year %></h4>
 
     <% unless @release.studio.empty? %>
@@ -45,46 +43,10 @@
 <br>
 <br>
 
-<div class="row">
+ <div class="row">
   <p>
     <%= link_to 'Add a Review', new_release_review_path(@release) %>
   </p>
-  <% @reviews.each do |review| %>
-  <div class="review">
-    <ul class="no-bullet">
-      <li>
-        Rating: <%=review.rating%>
-        <br />
-        Author: <%= review.user.username %>
-        <br />
-        Review: <%=review.body%>
-        <br />
-        <% if current_user == review.user || current_user.try(:is_admin?)%>
-            <%= link_to "Edit/Delete this Review", edit_release_review_path(@release, review) %>
-        <% end %>
-        <br />
-          <br />
-        <% review.comments.each do |comment| %>
-        <ul>
-          <div class="large-6 large-offset-1 columns">
-            <li>
-               Comment: <%= comment.body %>
-               <br />
-               Written by: <%= comment.user.username %>
-               <% if current_user == comment.user || current_user.try(:is_admin?)%>
-               <p><%= link_to "Edit/Delete Comment", edit_review_comment_path(review, comment) %></p>
-               <% end %>
-             </li>
-             <br />
-          </div>
-        </ul>
-        <% end %>
-      </li>
-    </ul>
-    <div class="row">
-
-    </div>
-      <%= link_to 'Add Comment', new_review_comment_path(review) %>
+  <div id="app">
   </div>
-  <% end %>
 </div>
