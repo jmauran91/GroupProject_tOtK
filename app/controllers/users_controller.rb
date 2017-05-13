@@ -11,14 +11,13 @@ class UsersController < ApplicationController
 
   def destroy
     user = User.find(params[:id])
-    Comment.delete_all("user_id = '#{params[:id]}'")
     Review.delete_all("user_id = '#{params[:id]}'")
     releases = user.releases
 
     releases.each do |release|
       destroy_release(release)
     end
-    
+
     user.destroy
     flash[:notice] = "User successfully deleted"
     redirect_to users_path

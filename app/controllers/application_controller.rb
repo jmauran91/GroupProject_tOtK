@@ -22,9 +22,6 @@ class ApplicationController < ActionController::Base
   def destroy_release(release)
     reviews = release.reviews
     reviews.each do |review|
-      review.comments.each do |comment|
-        comment.destroy
-      end
       review.destroy
     end
     release.destroy

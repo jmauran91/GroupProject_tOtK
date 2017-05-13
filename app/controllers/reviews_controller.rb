@@ -2,7 +2,6 @@ class ReviewsController < ApplicationController
 
   def show
     @review = Review.find(params[:id])
-    @comments = @review.comments
   end
 
   def new
@@ -55,10 +54,6 @@ class ReviewsController < ApplicationController
   def destroy
     review = Review.find(params[:id])
     release = Release.find(review.release)
-    comments = review.comments
-    comments.each do |comment|
-        comment.destroy
-    end
     review.destroy
     flash[:notice] = "Review successfully deleted"
     redirect_to release_path(release)
