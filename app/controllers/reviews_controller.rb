@@ -2,7 +2,6 @@ class ReviewsController < ApplicationController
 
   def show
     @review = Review.find(params[:id])
-    @comments = @review.comments
   end
 
   def new
@@ -35,6 +34,10 @@ class ReviewsController < ApplicationController
     @release = Release.find(params[:release_id])
     @review = Review.find(params[:id])
     @release_genres = @release.genres
+    unless @review.user == current_user
+      flash[:notice] = "You can't edit this review"
+      redirect_to release_path(@release)
+    end
   end
 
   def update
@@ -51,10 +54,6 @@ class ReviewsController < ApplicationController
   def destroy
     review = Review.find(params[:id])
     release = Release.find(review.release)
-    comments = review.comments
-    comments.each do |comment|
-        comment.destroy
-    end
     review.destroy
     flash[:notice] = "Review successfully deleted"
     redirect_to release_path(release)

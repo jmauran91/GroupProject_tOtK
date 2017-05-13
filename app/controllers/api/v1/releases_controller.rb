@@ -8,14 +8,5 @@ class Api::V1::ReleasesController < ApplicationController
   def show
     render json: Release.find(params[:id])
   end
-  # def show
-  #   thing = Thing.find(params[:id])
-  #   render json: thing
-  # end
 
-  private
-
-  # def thing_params
-  #   params.require(:thing).permit(:id, :name)
-  # end
 end

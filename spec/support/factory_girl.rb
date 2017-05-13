@@ -28,8 +28,4 @@ FactoryGirl.define do
     id 1
   end
 
-  factory :comment do
-    body "This review is too short"
-    id 1
-  end
 end

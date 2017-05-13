@@ -14,7 +14,6 @@ class UsersController < ApplicationController
 
   def destroy
     user = User.find(params[:id])
-    Comment.delete_all("user_id = '#{params[:id]}'")
     Review.delete_all("user_id = '#{params[:id]}'")
     releases = user.releases
 
