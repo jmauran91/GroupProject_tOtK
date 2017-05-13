@@ -1,6 +1,49 @@
-<h1> Profile Page </h1>
+<div class="row">
+  <div class="small-centered head">
+      <h1> <%= @user.username %>'s profile </h1>
+  </div>
+</div>
 
+<div class="row">
+
+<div class="column small-12 large-4 avatar">
 <%= image_tag(@user.avatar_url) if @user.avatar? %>
-
+<div class="row">
 <%= link_to "Edit my profile", edit_user_registration_path %>
-<p> This is you: <%= @user.username %> </p>
+
+</div>
+</div>
+
+<div class="column small-12 large-8 stats">
+  <ul class="vertical menu" data-accordion-menu>
+    <li>
+      <a href="#"><%= @user.username %>'s Releases</a>
+      <ul class="menu vertical nested">
+        <% @user_releases.each do |release| %>
+          <li>
+            <p>
+              <%= release.updated_at.strftime("%B %d ") %>:  <%= @user.username %>
+              posted a release: <%= link_to release.title, release_path(release) %>
+            </p>
+          </li>
+        <% end %>
+      </ul>
+    </li>
+    <li>
+      <a href="#"><%= @user.username %>'s Reviews</a>
+      <ul class="menu vertical nested">
+
+        <% @user_reviews.each do |review| %>
+          <li>
+            <p>
+              <%= review.updated_at.strftime("%B %d ") %>:  <%= @user.username %>
+              posted a review for <%= link_to review.release.title, release_path(review.release) %> by <%= review.release.artist %>
+            </p>
+          </li>
+        <% end %>
+      </ul>
+    </li>
+  </ul>
+</div>
+
+</div>
