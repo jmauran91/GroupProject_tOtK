@@ -9,10 +9,6 @@
     "test": "node_modules/.bin/karma start react/karma.conf.js",
     "webpack": "node_modules/.bin/webpack --config ./react/webpack.config.js"
   },
-  "cacheDirectories": [
-    "node_modules",
-    "client/node_modules"
-  ],
   "author": "",
   "license": "ISC",
   "devDependencies": {
