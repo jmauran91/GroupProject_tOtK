@@ -5,12 +5,13 @@
   "main": "webpack.config.js",
   "scripts": {
     "heroku-postbuild": "NODE_ENV=production npm run webpack -- -p",
-   "start": "npm run webpack -- --watch",
-   "test": "node_modules/.bin/karma start react/karma.conf.js",
-   "webpack": "node_modules/.bin/webpack --config ./react/webpack.config.js"
+    "start": "npm run webpack -- --watch",
+    "test": "node_modules/.bin/karma start react/karma.conf.js",
+    "webpack": "node_modules/.bin/webpack --config ./react/webpack.config.js"
   },
   "cacheDirectories": [
-    "node_modules"
+    "node_modules",
+    "client/node_modules"
   ],
   "author": "",
   "license": "ISC",
@@ -47,6 +48,6 @@
     "redux": "^3.5.2",
     "redux-form": "^5.2.3",
     "redux-thunk": "^2.1.0",
-    "webpack": "^2.2.0"
+    "webpack": "^1.13.0"
   }
 }
