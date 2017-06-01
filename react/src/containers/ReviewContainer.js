@@ -47,7 +47,6 @@ class ReviewContainer extends Component {
       })
       .then(response => response.json())
       .then(response => {
-        console.log(response)
         this.setState({ reviews: response });
       })
   }
@@ -74,7 +73,6 @@ class ReviewContainer extends Component {
       })
       .then(response => response.json())
       .then(response => {
-        console.log(response)
         this.setState({ reviews: response  });
       })
   }
