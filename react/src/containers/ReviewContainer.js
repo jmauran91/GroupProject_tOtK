@@ -15,8 +15,8 @@ class ReviewContainer extends Component {
   }
 
   componentDidMount() {
-    console.log('hello')
-    fetch(`/api/v1/releases/8/reviews`)
+    let id = this.props.params.id
+    fetch(`/api/v1/releases/${id}/reviews`)
       .then(response => response.json())
       .then(responseData => {
         this.setState({ reviews: responseData })
