@@ -15,8 +15,9 @@ class ReviewContainer extends Component {
   }
 
   componentDidMount() {
-    let releaseId = this.props.params.id;
-
+    let theUrl = window.location.href
+    let urlSplit = theUrl.split('/')
+    let releaseId = urlSplit[4]
     fetch(`/api/v1/releases/${releaseId}/reviews`)
       .then(response => response.json())
       .then(responseData => {
@@ -101,7 +102,7 @@ class ReviewContainer extends Component {
           <Review
           key={review.id}
           id={review.id}
-          releaseId={this.props.params.id}
+          releaseId={review.release_id}
           rating={review.rating}
           body={review.body}
           votes={review.votes}
