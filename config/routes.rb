@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'hello_world', to: 'hello_world#index'
   devise_for :users
   resources :releases, only: [:index, :show, :create, :new, :edit, :update, :destroy] do
     resources :reviews, only: [:create, :new, :destroy, :edit, :update]
