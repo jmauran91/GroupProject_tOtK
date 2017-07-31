@@ -43,19 +43,6 @@
         <% end %>
       </ul>
     </li>
-    <li>
-      <a href="#"><%= @user.username %>'s Comments</a>
-      <ul class="menu vertical nested">
-        <% @user_comments.each do |comment| %>
-          <li>
-            <p>
-              <%= comment.updated_at.strftime("%B %d ") %>:  <%= @user.username %>
-              commented on a review for  <%= link_to comment.review.release.title, release_path(comment.review.release) %> by <%= comment.review.release.artist %>
-            </p>
-          </li>
-          <% end %>
-      </ul>
-    </li>
   </ul>
 </div>
 

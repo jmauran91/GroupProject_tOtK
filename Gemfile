@@ -20,7 +20,7 @@ gem 'devise'
 gem 'carrierwave'
 gem 'fog-aws'
 gem 'mini_magick'
-
+gem "react_on_rails", "~> 7"
 group :development, :test do
   gem 'pry-rails'
   gem 'rspec-rails'
@@ -49,3 +49,5 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+gem 'mini_racer', platforms: :ruby
