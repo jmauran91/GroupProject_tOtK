@@ -19,3 +19,10 @@ Rails.application.config.assets.version = '1.0'
 
 # Add folder with webpack generated assets to assets.paths
 Rails.application.config.assets.paths << Rails.root.join("app", "assets", "webpack")
+
+
+# Images
+Rails.application.config.assets.precompile << /\.(?:png|jpg|jpeg|gif)\z/
+
+# Fonts
+Rails.application.config.assets.precompile << /\.(?:svg|eot|woff|ttf)\z/
