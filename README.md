@@ -15,7 +15,12 @@ or search through the releases with the search bar.
 ```
 ## Check our App out on Heroku
 
+WARNING: These work best on Google Chrome. Firefox revisions are underway.
+
 * [Kensai Music DB](https://group-project-totk.herokuapp.com/)
+
+ALTERNATE VERSION - employing the React components
+* [Kensai Music DB - React](https://group-project-totk2.herokuapp.com/)
 
 #### Screenshot of the App
 
