@@ -8,6 +8,7 @@
     "npm": "5.3.0"
   },
   "scripts": {
+    "postinstall": "cd client && npm install",
     "heroku-postbuild": "NODE_ENV=production npm run webpack -- -p",
     "start": "npm run webpack -- --watch",
     "test": "node_modules/.bin/karma start react/karma.conf.js",
@@ -17,6 +18,7 @@
   "license": "ISC",
   "devDependencies": {
     "enzyme": "^2.2.0",
+    "gh-pages": "^1.0.0",
     "isparta-loader": "^2.0.0",
     "jasmine-ajax": "^3.2.0",
     "jasmine-core": "^2.4.1",
