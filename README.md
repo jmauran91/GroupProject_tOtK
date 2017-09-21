@@ -19,8 +19,10 @@ WARNING: These work best on Google Chrome. Firefox revisions are underway.
 
 * [Kensai Music DB](https://group-project-totk.herokuapp.com/)
 
-ALTERNATE VERSION - employing the React components
-* [Kensai Music DB - React](https://group-project-totk2.herokuapp.com/)
+This is an updated version, with functioning React components. GitHub Repo for this
+available at: [Solo_Retry_Totk](github.com/jmauran/solo_retry)
+
+* [Kensai Music DB](https://group-project-totk2.herokuapp.com/)
 
 #### Screenshot of the App
 
