@@ -3,15 +3,11 @@ class Api::V1::ReviewsController < ApplicationController
   skip_before_filter  :verify_authenticity_token
 
   def index
-    @release = Release.find(params[:release_id])
-    @reviews = @release.reviews.order(id: :desc)
-    render json: @reviews
+    render json: Review.all
   end
 
   def show
-    @release = Release.find(params[:release_id])
-    @reviews = @release.reviews.order(id: :desc)
-    render json: @reviews
+    render json: Review.find(params[:id])
   end
 
   def edit
